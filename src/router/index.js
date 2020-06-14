@@ -19,7 +19,7 @@ import Layout from '../views/layout/Layout'
   }
  **/
 export const constantRouterMap = [
-  {path: '/404', component: () => import('/views/404'), hidden: true},
+  {path: '/404', component: () => import('../views/404'), hidden: true},
   {
     path: '',
     component: Layout,
@@ -28,31 +28,31 @@ export const constantRouterMap = [
       {
         path: 'index/:id?',
         name: 'index',
-        component: () => import('/views/home/index')
+        component: () => import('../views/home/index')
       },
       {
         path: 'article/:slug',
         name: 'article',
-        component: () => import('/views/article/index')
+        component: () => import('../views/article/index')
       },
       {
         path: ':type/:meta/:id?',
         name: 'meta',
-        component: () => import('/views/home/index')
+        component: () => import('../views/home/index')
       }, {
         path: 'archives',
         name: 'archives',
-        component: () => import('/views/home/archives')
+        component: () => import('../views/home/archives')
       },
       {
         path: 'allTags',
         name: 'allTags',
-        component: () => import('/views/home/allTags')
+        component: () => import('../views/home/allTags')
       },
       {
         path: 'allCategories',
         name: 'allCategories',
-        component: () => import('/views/home/allCategories')
+        component: () => import('../views/home/allCategories')
       }]
   }
 ];
