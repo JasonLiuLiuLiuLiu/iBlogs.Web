@@ -32,9 +32,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: npm install
       run: npm install
-
-    - name: npm run dev
-      run: npm run dev
     
           # Runs a single command using the runners shell
     - name: npm build
