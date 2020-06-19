@@ -51,4 +51,4 @@ jobs:
           script: |
             docker stop ${{ secrets.DOCKER_CONTAINER_NAME }}
             docker rm ${{ secrets.DOCKER_CONTAINER_NAME }}
-            docker run --restart always --name ${{ secrets.DOCKER_CONTAINER_NAME }} -d -p 8081:80 ${{ secrets.DOCKER_REPO }}:${{ github.run_number }} --spring.datasource.url="${{secrets.SPRING_DATASOURCE_URL}}" --spring.redis.host="${{secrets.SPRING_REDIS_HOST}}"
+            docker run --restart always --name ${{ secrets.DOCKER_CONTAINER_NAME }} -d -p 8081:80 ${{ secrets.DOCKER_REPO }}:${{ github.run_number }}
