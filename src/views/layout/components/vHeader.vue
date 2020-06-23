@@ -1,4 +1,4 @@
-<template>
+v<template>
   <headroom>
     <header id="header" class="bg-white Sticky AppHeader header" style="position: relative" data-za-module="TopNavBar">
       <div class="navbar-container">
@@ -35,7 +35,7 @@
   import { headroom } from 'vue-headroom'
 
   export default {
-    name:"header",
+    name:"vHeader",
     components: {
       headroom
     }

@@ -1,20 +1,20 @@
 <template>
   <div class="app-wrapper" :class="classObj">
-    <v-header></v-header>
+    <v-Header></v-Header>
     <app-main></app-main>
-    <v-footer></v-footer>
+    <v-Footer></v-Footer>
   </div>
 </template>
 
 <script>
-  import {AppMain, Header, footer} from './components'
+  import {AppMain, vHeader, vFooter} from './components'
 
   export default {
     name: 'layout',
     components: {
       AppMain,
-      vHeader: Header,
-      vFooter: footer
+      'v-Header': vHeader,
+      'v-Footer': vFooter
     },
     beforeCreate() {
       this.$store.dispatch('getOptions');

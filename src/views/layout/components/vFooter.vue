@@ -44,7 +44,7 @@
 </template>
 <script>
   export default {
-    name: "footer"
+    name: "vFooter"
   }
 </script>
 <style>
