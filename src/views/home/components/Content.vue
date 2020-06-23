@@ -154,7 +154,8 @@
     <div class="lists-navigator clearfix" v-if="displayType=='index'">
       <ol class="page-navigator">
         <li class="prev" v-if="data.pageNum>1"><a :href="'/index/'+(data.pageNum-1)">←</a></li>
-        <li :class="index==data.pageNum?'current':''" v-for="index in data.totalPage"><a :href="'/index/'+index">{{index}}</a>
+        <li :class="index==data.pageNum?'current':''" v-for="index in getPageNums"><a
+          :href="'/index/'+index">{{index}}</a>
         </li>
         <li class="next" v-if="data.pageNum<data.totalPage"><a :href="'/index/'+(data.pageNum+1)">→</a></li>
       </ol>
@@ -163,7 +164,7 @@
       <ol class="page-navigator">
         <li class="prev" v-if="data.pageNum>1"><a
           :href="'/'+displayType+'/'+encodeURIComponent(displayMeta)+'/'+(data.pageNum-1)">←</a></li>
-        <li :class="index==data.pageNum?'current':''" v-for="index in data.totalPage"><a
+        <li :class="index==data.pageNum?'current':''" v-for="index in getPageNums"><a
           :href="'/'+displayType+'/'+encodeURIComponent(displayMeta)+'/'+index">{{index}}</a>
         </li>
         <li class="next" v-if="data.pageNum<data.totalPage"><a
@@ -183,6 +184,29 @@
       formatDate(time) {
         const date = new Date(time);
         return dateFormat(date, 'yyyy-MM-dd');
+      }
+    },
+    computed: {
+      getPageNums: function () {
+        let startIndex = this.data.pageNum - 2;
+        if (startIndex < 1) {
+          startIndex = 1;
+        }
+        let endIndex = this.data.pageNum + 2;
+        if (endIndex - startIndex < 4) {
+          endIndex = startIndex + 4;
+        }
+        if (endIndex > this.data.totalPage) {
+          endIndex = this.data.totalPage;
+        }
+        let nums = [1];
+        for (let i = startIndex; i <= endIndex; i++) {
+          if (i !== 1 && i !== this.data.totalPage) {
+            nums.push(i)
+          }
+        }
+        nums.push(this.data.totalPage);
+        return nums;
       }
     }
   }
