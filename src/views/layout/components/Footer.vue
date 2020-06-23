@@ -21,11 +21,6 @@
             <div class="info-text">
               <p>Always coding,Always writing!</p>
               <p>
-                Azure Pipeline Build <a
-                href="https://dev.azure.com/ZhenyuDevOps/iBlogs/_build/latest?definitionId=1&branchName=master"
-                target="_blank">BuildNumber</a>
-              </p>
-              <p>
                 <a href="http://iblogs.site">iblogs.site</a> | <a href="http://www.beian.gov.cn">赣ICP备18014060号-2</a>
               </p>
               <p>
