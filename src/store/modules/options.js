@@ -11,7 +11,7 @@ const keys = [
   'SiteInstallTime',
   'LastActiveTime',
   'SiteUrl',
-  'pageSize',
+  'PageSize',
   'SideBarCategoriesCount',
   'hotCategories',
   'SideBarTagsCount',
