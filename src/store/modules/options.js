@@ -30,7 +30,7 @@ const options = {
       SiteInstallTime: '2020-01-01',
       LastActiveTime: '2020-01-01',
       SiteUrl: 'http://localhost:8090/',
-      pageSize: 20,
+      PageSize: 10,
       SideBarCategoriesCount: 5,
       SideBarTagsCount: 5,
       Author: 'iBlogs'

@@ -31,7 +31,7 @@
     created() {
       this.$store.dispatch('getOptions').then(() => {
         let pageNum = this.$route.params.id;
-        let pageSize = this.$store.state.options.options.pageSize;
+        let pageSize = this.$store.state.options.options.PageSize;
         if (!pageNum) {
           pageNum = 1;
         }
