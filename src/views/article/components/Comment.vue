@@ -2,7 +2,7 @@
   <div id="@article.Id" class="comment-container">
     <div id="comments" class="clearfix">
 
-      <form method="post" id="comment-form" class="comment-form" v-if="this.$store.state.content.content.allowComment">
+      <form method="post" id="comment-form" class="comment-form" v-if="content.allowComment">
         <input type="hidden" name="coid" id="coid"/>
         <input type="hidden" name="cid" id="cid" value="@Model.Content.Id"/>
         <input name="author" maxlength="12" id="author" class="form-control input-control clearfix" placeholder="姓名 (*)"
@@ -80,9 +80,11 @@
       </ol>
       <div class="lists-navigator clearfix">
         <ol class="page-navigator">
-          <li class="prev"><a href="?cp=@comments.PrevPage#comments">←</a></li>
-          <li class=""><a href="?cp=@navIndex#comments">index</a></li>
-          <li class="next"><a href="?cp=@comments.NextPage#comments">→</a></li>
+          <li class="prev" v-if="comments.pageNum>1"><a href="#comments">←</a></li>
+          <li :class="index===comments.pageNum?'current':''" v-for="index in getPageNums"><a
+            href="#comments">{{index}}</a>
+          </li>
+          <li class="next" v-if="comments.pageNum<comments.totalPage"><a href="#comments">→</a></li>
         </ol>
 
       </div>
@@ -95,10 +97,13 @@
 
   export default {
     name: 'Comment',
-    props: ['contentId'],
+    props: ['content'],
     data() {
       return {
-        comments: null,
+        comments: {
+          pageNum: 1,
+          totalPage: 1
+        },
         pageNum: 1,
         pageSize: 10,
       }
@@ -112,9 +117,34 @@
         return dateFormat(date, 'yyyy-MM-dd');
       }
     },
+    computed:{
+      getPageNums: function () {
+        debugger;
+        let startIndex = this.comments.pageNum - 2;
+        if (startIndex < 1) {
+          startIndex = 1;
+        }
+        let endIndex = this.comments.pageNum + 2;
+        if (endIndex - startIndex < 4) {
+          endIndex = startIndex + 4;
+        }
+        if (endIndex > this.comments.totalPage) {
+          endIndex = this.comments.totalPage;
+        }
+        let nums = [1];
+        for (let i = startIndex; i <= endIndex; i++) {
+          if (i !== 1 && i !== this.comments.totalPage) {
+            nums.push(i)
+          }
+        }
+        nums.push(this.comments.totalPage);
+        return nums;
+      }
+    },
     methods: {
-      getComments() {
-        getComments(this.$store.state.content.content.id, this.pageNum, this.pageSize).then(response => {
+      getComments: function (pageNum) {
+        this.pageNum = pageNum == null ? this.pageNum : pageNum;
+        getComments(this.content.id, this.pageNum, this.pageSize).then(response => {
           this.comments = response.data.list;
         })
       }

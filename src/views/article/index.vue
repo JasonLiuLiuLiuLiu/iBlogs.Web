@@ -1,20 +1,20 @@
 <template>
   <div>
     <v-article :content="content"></v-article>
-    <share></share>
-    <comment :content-id="content.id"></comment>
+    <share :site-url="this.$store.state.options.options.SiteUrl" :content-id="content.id" :content-title="content.title"></share>
+    <comment :content="content"></comment>
   </div>
 </template>
 
 <script>
-  import Article from "./components/Article";
+  import vContent from "./components/Content";
   import Comment from "./components/Comment";
   import Share from "./components/Share";
   import {index} from "../../api/content";
 
   export default {
     name: 'article',
-    components: {Comment, Share, vArticle: Article},
+    components: {Comment, Share, vArticle: vContent},
     data() {
       return {
         content: {

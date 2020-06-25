@@ -31,7 +31,7 @@
   import {dateFormat} from "../../../utils/dateUtils";
 
   export default {
-    name: 'Article',
+    name: 'vContent',
     props:['content'],
     filters: {
       formatDate(time) {
