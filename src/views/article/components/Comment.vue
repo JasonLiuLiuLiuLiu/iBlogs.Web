@@ -83,7 +83,7 @@
 
           <li class="prev"><a href="?cp=@comments.PrevPage#comments">←</a></li>
 
-          <li class=""><a href="?cp=@navIndex#comments">@navIndex</a></li>
+          <li class=""><a href="?cp=@navIndex#comments">index</a></li>
           <li class="next"><a href="?cp=@comments.NextPage#comments">→</a></li>
         </ol>
 
