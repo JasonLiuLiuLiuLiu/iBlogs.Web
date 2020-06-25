@@ -80,9 +80,7 @@
       </ol>
       <div class="lists-navigator clearfix">
         <ol class="page-navigator">
-
           <li class="prev"><a href="?cp=@comments.PrevPage#comments">←</a></li>
-
           <li class=""><a href="?cp=@navIndex#comments">index</a></li>
           <li class="next"><a href="?cp=@comments.NextPage#comments">→</a></li>
         </ol>
@@ -97,6 +95,7 @@
 
   export default {
     name: 'Comment',
+    props: ['contentId'],
     data() {
       return {
         comments: null,
