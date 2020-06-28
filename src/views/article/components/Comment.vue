@@ -20,61 +20,24 @@
 
 
       <ol class="comment-list" v-for="comment in this.comments">
-        <li id="li-comment-@comment.Id" class="comment-body comment-parent comment-odd">
-          <div id="comment-@comment.Id">
+        <li :id="'li-comment-'+comment.id" class="comment-body comment-parent comment-odd">
+          <div :id="'comment-'+comment.id">
             <div class="comment-view" onclick="">
               <div class="comment-header">
-                <img class="avatar" src="" :title="comment.Author"
-                     width="80" height="80">
-                <span class="comment-author">
-                                            <a :href="comment.Url" target="_blank" rel="external nofollow">{{comment.Author}}</a>
-                                        </span>
+                <img class="avatar" src="" :title="comment.author" :src="comment.mailPic" width="80" height="80">
+                <span class="comment-author"><a :href="comment.url" target="_blank" rel="external nofollow">{{comment.author}}</a></span>
               </div>
               <div class="comment-content">
                 <span class="comment-author-at"></span>
-                <p>{{comment.Content}}</p>
+                <p>{{comment.content}}</p>
               </div>
               <div class="comment-meta">
-                <time class="comment-time">@comment.Created.ToString("yyyy-MM-dd")</time>
+                <time class="comment-time">{{comment.created|formatDate}}</time>
                 <span class="comment-reply">
-                                            <a rel="nofollow"
-                                               onclick="TaleComment.reply('@comment.Id','@comment.Author');">回复</a>
+                                            <a rel="nofollow" onclick="">回复</a>
                                         </span>
               </div>
             </div>
-          </div>
-
-          <div class="comment-children">
-            <ol class="comment-list">
-
-              <li id="li-comment-@child.Id"
-                  class="comment-body comment-child comment-level-odd comment-odd">
-                <div id="comment-@child.Id">
-                  <div class="comment-view">
-                    <div class="comment-header">
-                      <img class="avatar" src="" title="@child.Author" width="80" height="80">
-                      <span class="comment-author comment-by-author">
-                                                                <a href="@child.Url" target="_blank"
-                                                                   rel="external nofollow">@child.Author</a>
-                                                            </span>
-                    </div>
-                    <div class="comment-content">
-                                                            <span class="comment-author-at">
-                                                                @child.CommentAt(comment)
-                                                            </span>
-                      <p>@child.Content</p>
-                    </div>
-                    <div class="comment-meta">
-                      <time class="comment-time">@child.Created.ToString("yyyy-MM-dd")</time>
-                      <span class="comment-reply">
-                                                                <a rel="nofollow"
-                                                                   onclick="TaleComment.reply('@child.Id','@child.Author');">回复</a>
-                                                            </span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ol>
           </div>
         </li>
       </ol>
@@ -100,12 +63,18 @@
     props: ['content'],
     data() {
       return {
-        comments: {
-          pageNum: 1,
-          totalPage: 1
-        },
+        comments: [{
+          id: null,
+          content: null,
+          created: null,
+          url: null,
+          author: null,
+          mailPic: null,
+          children: null
+        }],
         pageNum: 1,
         pageSize: 10,
+        totalPage: 1
       }
     },
     created() {
@@ -117,27 +86,28 @@
         return dateFormat(date, 'yyyy-MM-dd');
       }
     },
-    computed:{
+    computed: {
       getPageNums: function () {
-        debugger;
-        let startIndex = this.comments.pageNum - 2;
+        let startIndex = this.pageNum - 2;
         if (startIndex < 1) {
           startIndex = 1;
         }
-        let endIndex = this.comments.pageNum + 2;
+        let endIndex = this.pageNum + 2;
         if (endIndex - startIndex < 4) {
           endIndex = startIndex + 4;
         }
-        if (endIndex > this.comments.totalPage) {
-          endIndex = this.comments.totalPage;
+        if (endIndex > this.totalPage) {
+          endIndex = this.totalPage;
         }
         let nums = [1];
         for (let i = startIndex; i <= endIndex; i++) {
-          if (i !== 1 && i !== this.comments.totalPage) {
+          if (i !== 1 && i !== this.totalPage) {
             nums.push(i)
           }
         }
-        nums.push(this.comments.totalPage);
+        if (this.totalPage !== 1) {
+          nums.push(this.totalPage);
+        }
         return nums;
       }
     },
@@ -146,6 +116,8 @@
         this.pageNum = pageNum == null ? this.pageNum : pageNum;
         getComments(this.content.id, this.pageNum, this.pageSize).then(response => {
           this.comments = response.data.list;
+          this.pageNum = response.data.pageNum;
+          this.totalPage = response.data.totalPage
         })
       }
     }
