@@ -2,23 +2,22 @@
   <div id="@article.Id" class="comment-container">
     <div id="comments" class="clearfix">
 
-      <form method="post" id="comment-form" class="comment-form" v-if="content.allowComment">
-        <input type="hidden" name="coid" id="coid"/>
-        <input type="hidden" name="cid" id="cid" value="@Model.Content.Id"/>
+      <form method="post" id="comment-form" target="#" class="comment-form" v-if="content.allowComment">
         <input name="author" maxlength="12" id="author" class="form-control input-control clearfix" placeholder="姓名 (*)"
-               required/>
+               required v-model="commentForm.author"/>
         <input type="email" name="mail" id="mail" class="form-control input-control clearfix" placeholder="邮箱 (*)"
-               required/>
-        <input type="url" name="url" id="url" class="form-control input-control clearfix" placeholder="网址 (http://)"/>
+               required v-model="commentForm.mail"/>
+        <input type="url" name="url" id="url" class="form-control input-control clearfix" placeholder="网址 (http://)"
+               v-model="commentForm.url"/>
         <textarea name="content" id="textarea" class="form-control" placeholder="客官,留下你的评论." required minlength="5"
-                  maxlength="2000"></textarea>
-
-        <button class="submit" id="misubmit">提交</button>
+                  maxlength="2000" v-model="commentForm.content"></textarea>
+        <button type="button" class="submit" @click="saveComment(null)">提交</button>
       </form>
 
       <span class="response" v-else>评论已关闭.</span>
 
 
+      <div id="comment-top"></div>
       <ol class="comment-list" v-for="comment in this.comments">
         <li :id="'li-comment-'+comment.id" class="comment-body comment-parent comment-odd">
           <div :id="'comment-'+comment.id">
@@ -55,14 +54,23 @@
   </div>
 </template>
 <script>
-  import {getComments} from "../../../api/comment";
+  import {getComments, submitComment} from "../../../api/comment";
   import {dateFormat} from "../../../utils/dateUtils";
+  import gravatar from 'gravatar';
 
   export default {
     name: 'Comment',
     props: ['content'],
     data() {
       return {
+        commentForm: {
+          parentId: null,
+          contentId: this.content.id,
+          author: null,
+          mail: null,
+          url: null,
+          content: null
+        },
         comments: [{
           id: null,
           content: null,
@@ -112,6 +120,30 @@
       }
     },
     methods: {
+      saveComment: function (parentId) {
+        this.commentForm.parentId = parentId == null ? null : parentId;
+        submitComment(this.commentForm).then(response => {
+          if (response.data === true) {
+            document.getElementById('comment-form').reset();
+            this.comments.unshift({
+              id: 0,
+              content: this.commentForm.content,
+              created: new Date().getTime(),
+              url: this.commentForm.url,
+              author: this.commentForm.author,
+              mailPic: gravatar.url(this.commentForm.mail, {s: '60', d: 'identicon'}),
+              children: null
+            });
+            this.commentForm.parentId = null;
+            this.commentForm.contentId = this.content.id;
+            this.commentForm.author = null;
+            this.commentForm.mail = null;
+            this.commentForm.url = null;
+            this.commentForm.content = null;
+            document.querySelector("#comment-top").scrollIntoView(true);
+          }
+        })
+      },
       getComments: function (pageNum) {
         this.pageNum = pageNum == null ? this.pageNum : pageNum;
         getComments(this.content.id, this.pageNum, this.pageSize).then(response => {
