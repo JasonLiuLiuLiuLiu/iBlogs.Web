@@ -1,7 +1,6 @@
 <template>
   <div id="@article.Id" class="comment-container">
     <div id="comments" class="clearfix">
-
       <form method="post" id="comment-form" target="#" class="comment-form" v-if="content.allowComment">
         <input name="author" maxlength="12" id="author" class="form-control input-control clearfix" placeholder="姓名 (*)"
                required v-model="commentForm.author"/>
