@@ -1,0 +1,72 @@
+<template>
+  <div>
+    <div class="main-content page-page" itemscope itemtype="http://schema.org/Article">
+      <div class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          <a :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)">{{ content.title }}</a>
+        </h1>
+        <div class="post-data">
+          <time :datetime="content.created|formatDate" itemprop="datePublished">发布于 {{ content.created|formatDate }}</time>
+          / <span v-html="showCategory(content.categories)" /> / <a href="#comments">{{ content.commentsNum==0?'没有评论':content.commentsNum+'条评论' }}</a>
+          / {{ content.hits }} 浏览
+        </div>
+      </div>
+      <div id="post-content" class="post-content" itemprop="articleBody">
+        <p class="post-tags"><span v-html="showTag(content.tags)" /></p>
+        <a />
+        <span v-html="content.content" />
+        <p class="post-info">
+          本文由 <a href="">{{ content.author==null||content.author==''?this.$store.state.options.options.Author:content.author }}</a> 创作，采用 <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="external nofollow"
+          >知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:
+          {{ content.modified|formatDate }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+</template>
+<script>
+import { index } from '../../../api/content'
+import { dateFormat } from '../../../utils/dateUtils'
+
+export default {
+  name: 'VContent',
+  filters: {
+    formatDate(time) {
+      const date = new Date(time)
+      return dateFormat(date, 'yyyy-MM-dd')
+    }
+  },
+  props: ['content'],
+  methods: {
+    showCategory(categories) {
+      if (categories) {
+        const arr = categories.split(',')
+        let sbuf = ''
+        for (const s in arr) {
+          sbuf += '<a href="/category/' + encodeURIComponent(arr[s]) + '">' + arr[s] + '</a>'
+        }
+        return sbuf
+      }
+      return this.showCategory('默认分类')
+    },
+    showTag(tags) {
+      if (tags) {
+        const arr = tags.split(',')
+        let sbuf = ''
+        for (const c in arr) {
+          sbuf += '<a href="/tag/' + encodeURIComponent(arr[c]) + '">' + arr[c] + '</a>'
+        }
+        return sbuf
+      }
+      return ''
+    }
+  }
+}
+</script>
+<style>
+
+</style>
