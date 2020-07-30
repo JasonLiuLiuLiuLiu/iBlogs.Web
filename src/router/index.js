@@ -32,13 +32,13 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
-    path: '',
+    path: '/',
     component: Layout,
-    redirect: '/login/1',
+    redirect: '/index',
     children: [
       {
-        path: 'login/:id?',
-        name: 'login',
+        path: 'index/:id?',
+        name: 'index',
         component: () => import('@/views/home/index')
       },
       {
@@ -66,7 +66,7 @@ export const constantRoutes = [
         component: () => import('@/views/home/allCategories')
       }]
   },
-  {path: '/404', component: () => import('@/views/404'), hidden: true},
+  { path: '/404', component: () => import('@/views/404'), hidden: true },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

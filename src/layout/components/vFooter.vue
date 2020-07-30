@@ -25,27 +25,29 @@
               </p>
               <p>
                 Powered by <a href="https://github.com/liuzhenyulive/iblogs" target="_blank">iBlogs</a> &copy; 2020 <a
-                href="https://github.com/liuzhenyulive" target="_blank">Liu, zhenyu</a>
+                  href="https://github.com/liuzhenyulive"
+                  target="_blank"
+                >Liu, zhenyu</a>
               </p>
             </div>
           </div>
         </div>
 
         <div class="meta-item meta-posts">
-          <span v-html="this.$store.state.options.options.FootContent1"></span>
+          <span v-html="this.$store.state.options.options.FootContent1" />
         </div>
 
         <div class="meta-item meta-comments">
-          <span v-html="this.$store.state.options.options.FootContent2"></span>
+          <span v-html="this.$store.state.options.options.FootContent2" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-  export default {
-    name: "vFooter"
-  }
+export default {
+  name: 'VFooter'
+}
 </script>
 <style>
 
