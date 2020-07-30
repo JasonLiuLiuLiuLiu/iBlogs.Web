@@ -3,7 +3,7 @@ v<template>
     <header id="header" class="bg-white Sticky AppHeader header" style="position: relative" data-za-module="TopNavBar">
       <div class="navbar-container">
         <a :href="this.$store.state.options.options.SiteUrl" class="navbar-logo">
-          <img src="/static/img/logo.png" alt="@ViewService.SiteOption(ConfigKey.SiteTitle)" />
+          <img src="/static/img/logo.png" alt="码农阿宇">
         </a>
         <div class="navbar-menu">
           <a href="/archives">归档</a>
@@ -11,16 +11,22 @@ v<template>
           <a href="/about">关于</a>
         </div>
         <div class="navbar-search" onclick="">
-          <span class="icon-search"></span>
+          <span class="icon-search" />
           <form role="search" onsubmit="return false;">
-                    <span class="search-box">
-                        <input type="text" id="search-inp" class="input" placeholder="搜索..." maxlength="30"
-                               autocomplete="off">
-                    </span>
+            <span class="search-box">
+              <input
+                id="search-inp"
+                type="text"
+                class="input"
+                placeholder="搜索..."
+                maxlength="30"
+                autocomplete="off"
+              >
+            </span>
           </form>
         </div>
         <div class="navbar-mobile-menu" onclick="">
-          <span class="icon-menu cross"><span class="middle"></span></span>
+          <span class="icon-menu cross"><span class="middle" /></span>
           <ul>
             <li><a href="/archives">归档</a></li>
             <li><a href="/links">友链</a></li>
@@ -32,14 +38,14 @@ v<template>
   </headroom>
 </template>
 <script>
-  import { headroom } from 'vue-headroom'
+import { headroom } from 'vue-headroom'
 
-  export default {
-    name:"vHeader",
-    components: {
-      headroom
-    }
+export default {
+  name: 'VHeader',
+  components: {
+    headroom
   }
+}
 
 </script>
 <style>
