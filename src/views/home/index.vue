@@ -19,7 +19,6 @@
 import SideBar from './components/SideBar/index'
 import Content from './components/Content'
 import { archive, category, tag, page } from '@/api/content'
-import NProgress from 'nprogress' // progress bar
 
 export default {
   name: 'Home',
@@ -34,7 +33,6 @@ export default {
     }
   },
   created() {
-    NProgress.start()
     this.$store.dispatch('getOptions').then(() => {
       let pageNum = this.$route.params.id
       const pageSize = this.$store.state.options.options.PageSize
@@ -58,7 +56,6 @@ export default {
         }
       }
       this.loading = false
-      NProgress.done()
     })
   },
   methods: {
