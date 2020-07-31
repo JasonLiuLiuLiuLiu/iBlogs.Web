@@ -1,7 +1,5 @@
 import Vue from 'vue'
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
-
 import App from './App'
 import store from './store'
 import router from './router'
@@ -10,8 +8,8 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootswatch/dist/litera/bootstrap.min.css'
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

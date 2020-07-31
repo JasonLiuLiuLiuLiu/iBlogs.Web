@@ -1,35 +1,35 @@
 <template>
   <div class="app-wrapper" :class="classObj">
-    <v-Header></v-Header>
-    <app-main></app-main>
-    <v-Footer></v-Footer>
+    <v-Header />
+    <app-main />
+    <v-Footer />
   </div>
 </template>
 
 <script>
-  import {AppMain, vHeader, vFooter} from './components'
+import { AppMain, vHeader, vFooter } from './components'
 
-  export default {
-    name: 'layout',
-    components: {
-      AppMain,
-      'v-Header': vHeader,
-      'v-Footer': vFooter
+export default {
+  name: 'Layout',
+  components: {
+    AppMain,
+    'v-Header': vHeader,
+    'v-Footer': vFooter
+  },
+  computed: {
+    device() {
+      return this.$store.state.app.device
     },
-    beforeCreate() {
-      this.$store.dispatch('getOptions');
-    },
-    computed: {
-      device() {
-        return this.$store.state.app.device
-      },
-      classObj() {
-        return {
-          mobile: this.device === 'mobile'
-        }
+    classObj() {
+      return {
+        mobile: this.device === 'mobile'
       }
     }
+  },
+  beforeCreate() {
+    this.$store.dispatch('getOptions')
   }
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

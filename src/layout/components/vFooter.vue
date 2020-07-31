@@ -1,5 +1,5 @@
 <template>
-  <div id="footer" class="footer bg-white">
+  <b-card-footer id="footer" class="footer bg-white">
     <div class="footer-social">
       <div class="footer-container clearfix">
         <div class="social-list">
@@ -9,8 +9,8 @@
       </div>
     </div>
     <div class="footer-meta">
-      <div class="footer-container">
-        <div class="meta-item meta-copyright">
+      <b-card-group class="footer-container">
+        <b-card class="meta-item meta-copyright">
           <div class="meta-copyright-info">
             <a href="https://github.com/liuzhenyulive/iblogs" class="info-logo">
               <img src="/static/img/logo.png" alt="">
@@ -31,18 +31,18 @@
               </p>
             </div>
           </div>
-        </div>
+        </b-card>
 
-        <div class="meta-item meta-posts">
+        <b-card class="meta-item meta-posts">
           <span v-html="this.$store.state.options.options.FootContent1" />
-        </div>
+        </b-card>
 
-        <div class="meta-item meta-comments">
+        <b-card class="meta-item meta-comments">
           <span v-html="this.$store.state.options.options.FootContent2" />
-        </div>
-      </div>
+        </b-card>
+      </b-card-group>
     </div>
-  </div>
+  </b-card-footer>
 </template>
 <script>
 export default {

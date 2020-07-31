@@ -1,52 +1,23 @@
-v<template>
-  <headroom>
-    <header id="header" class="bg-white Sticky AppHeader header" style="position: relative" data-za-module="TopNavBar">
-      <div class="navbar-container">
-        <a :href="this.$store.state.options.options.SiteUrl" class="navbar-logo">
-          <img src="/static/img/logo.png" alt="码农阿宇">
-        </a>
-        <div class="navbar-menu">
-          <a href="/archives">归档</a>
-          <a href="/links">友链</a>
-          <a href="/about">关于</a>
-        </div>
-        <div class="navbar-search" onclick="">
-          <span class="icon-search" />
-          <form role="search" onsubmit="return false;">
-            <span class="search-box">
-              <input
-                id="search-inp"
-                type="text"
-                class="input"
-                placeholder="搜索..."
-                maxlength="30"
-                autocomplete="off"
-              >
-            </span>
-          </form>
-        </div>
-        <div class="navbar-mobile-menu" onclick="">
-          <span class="icon-menu cross"><span class="middle" /></span>
-          <ul>
-            <li><a href="/archives">归档</a></li>
-            <li><a href="/links">友链</a></li>
-            <li><a href="/about">关于</a></li>
-          </ul>
-        </div>
-      </div>
-    </header>
-  </headroom>
+<template>
+  <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar-brand :href="this.$store.state.options.options.SiteUrl">
+      <img src="/static/img/logo.png" alt="码农阿宇">
+    </b-navbar-brand>
+    <b-navbar-nav class="ml-auto">
+      <b-nav-item href="/archives">归档</b-nav-item>
+      <b-nav-item href="/links">友链</b-nav-item>
+      <b-nav-item href="/about">关于</b-nav-item>
+      <b-nav-form>
+        <b-form-input size="sm" class="mr-sm-2" placeholder="Search" />
+        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+      </b-nav-form>
+    </b-navbar-nav>
+  </b-navbar>
 </template>
 <script>
-import { headroom } from 'vue-headroom'
-
 export default {
-  name: 'VHeader',
-  components: {
-    headroom
-  }
+  name: 'VHeader'
 }
-
 </script>
 <style>
 

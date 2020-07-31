@@ -1,17 +1,21 @@
 <template>
   <main role="main" class="App-main">
     <div class="Topstory">
-      <div class="Topstory-container">
-        <div v-if="!loading&&data!=null" class="Topstory-mainColumn">
-          <v-content
-            :display-type="displayType"
-            :display-meta="displayMeta"
-            :order-type="orderType"
-            :data="data"
-          />
-        </div>
-        <side-bar v-if="!loading&&data!=null" />
-      </div>
+      <b-container class="Topstory-container">
+        <b-row>
+          <b-col v-if="!loading&&data!=null" cols="8" class="Topstory-mainColumn">
+            <v-content
+              :display-type="displayType"
+              :display-meta="displayMeta"
+              :order-type="orderType"
+              :data="data"
+            />
+          </b-col>
+          <b-col>
+            <side-bar v-if="!loading&&data!=null" />
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
   </main>
 </template>
