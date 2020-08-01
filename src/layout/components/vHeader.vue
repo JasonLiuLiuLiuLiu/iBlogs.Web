@@ -1,30 +1,40 @@
 <template>
-  <b-container>
-    <b-navbar-brand :href="this.$store.state.options.options.SiteUrl">
-      <img src="/static/img/logo.png" alt="@ViewService.SiteOption(ConfigKey.SiteTitle)">
-    </b-navbar-brand>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarResponsive"
-      aria-controls="navbarResponsive"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <b-collapse id="navbarResponsive" class="collapse navbar-collapse">
-      <b-navbar-nav>
-        <b-nav-item href="../help/">Help</b-nav-item>
-        <b-nav-item href="../help/">Blog</b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-container>
+  <headroom>
+    <b-navbar class="bg-light" style="">
+      <b-container>
+        <b-navbar-brand :href="this.$store.state.options.options.SiteUrl">
+          <img src="/static/img/logo.png" alt="@ViewService.SiteOption(ConfigKey.SiteTitle)">
+        </b-navbar-brand>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
+        <b-collapse id="navbarResponsive" class="collapse navbar-collapse">
+          <b-navbar-nav>
+            <b-nav-item href="../help/">Help</b-nav-item>
+            <b-nav-item href="../help/">Blog</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-container>
+    </b-navbar>
+  </headroom>
+
 </template>
 <script>
+import { headroom } from 'vue-headroom'
+
 export default {
-  name: 'VHeader'
+  name: 'VHeader',
+  components: {
+    headroom
+  }
 }
 </script>
 <style>

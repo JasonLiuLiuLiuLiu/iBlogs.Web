@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="">
-      <v-Header />
-    </div>
+    <v-Header />
     <b-container>
       <app-main />
       <v-Footer />
@@ -37,7 +35,4 @@ export default {
 </script>
 
 <style>
-  body {
-    margin-top: 80px;
-  }
 </style>
