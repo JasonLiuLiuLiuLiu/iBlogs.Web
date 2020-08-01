@@ -1,5 +1,5 @@
 <template>
-  <div class="Card">
+  <b-card>
     <ul class="GlobalSideBar-navList">
       <li class="GlobalSideBar-navItem GlobalSideBar-starItem">
         <a class="Button GlobalSideBar-navLink Button--plain">
@@ -17,7 +17,7 @@
         </a>
       </li>
     </ul>
-  </div>
+  </b-card>
 </template>
 <script>
   export default {

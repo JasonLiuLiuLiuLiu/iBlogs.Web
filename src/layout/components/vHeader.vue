@@ -1,18 +1,26 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info">
+  <b-container>
     <b-navbar-brand :href="this.$store.state.options.options.SiteUrl">
-      <img src="/static/img/logo.png" alt="码农阿宇">
+      <img src="/static/img/logo.png" alt="@ViewService.SiteOption(ConfigKey.SiteTitle)">
     </b-navbar-brand>
-    <b-navbar-nav class="ml-auto">
-      <b-nav-item href="/archives">归档</b-nav-item>
-      <b-nav-item href="/links">友链</b-nav-item>
-      <b-nav-item href="/about">关于</b-nav-item>
-      <b-nav-form>
-        <b-form-input size="sm" class="mr-sm-2" placeholder="Search" />
-        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-      </b-nav-form>
-    </b-navbar-nav>
-  </b-navbar>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon" />
+    </button>
+    <b-collapse id="navbarResponsive" class="collapse navbar-collapse">
+      <b-navbar-nav>
+        <b-nav-item href="../help/">Help</b-nav-item>
+        <b-nav-item href="../help/">Blog</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-container>
 </template>
 <script>
 export default {
@@ -20,5 +28,9 @@ export default {
 }
 </script>
 <style>
-
+  .navbar-brand img {
+    width: auto;
+    height: 22px;
+    outline: 0
+  }
 </style>

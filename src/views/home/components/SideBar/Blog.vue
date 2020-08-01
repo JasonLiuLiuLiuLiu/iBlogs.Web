@@ -1,5 +1,5 @@
 <template>
-  <div class="Card">
+  <b-card>
     <div class="GlobalWrite">
       <div class="GlobalWrite-nav">
         <a class="GlobalWrite-navItem" href="https://cnblogs.com/coderayu" target="_blank" rel="noopener noreferrer"
@@ -34,7 +34,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </b-card>
 </template>
 <script>
   export default {

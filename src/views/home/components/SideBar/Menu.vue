@@ -1,5 +1,5 @@
 <template>
-  <div class="Card">
+  <b-card class="Card">
     <ul class="GlobalSideBar-categoryList">
       <li class="GlobalSideBar-categoryItem">
         <a href="/allcategories" title="分类" data-za-not-track-link="true" type="button" class="Button Button--plain" style="color: rgb(0, 132, 255);">
@@ -37,7 +37,7 @@
         </a>
       </li>
     </ul>
-  </div>
+  </b-card>
 </template>
 <script>
   export default {

@@ -6,10 +6,11 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission' // permission control
-
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootswatch/dist/litera/bootstrap.min.css'
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

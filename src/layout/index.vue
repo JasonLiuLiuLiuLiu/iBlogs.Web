@@ -1,8 +1,12 @@
 <template>
-  <div class="app-wrapper" :class="classObj">
-    <v-Header />
-    <app-main />
-    <v-Footer />
+  <div>
+    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light" style="">
+      <v-Header />
+    </div>
+    <b-container>
+      <app-main />
+      <v-Footer />
+    </b-container>
   </div>
 </template>
 
@@ -32,5 +36,8 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style>
+  body {
+    margin-top: 80px;
+  }
 </style>
