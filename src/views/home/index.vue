@@ -5,15 +5,15 @@
         <b-col class="col-md-2 left mt-2">
           <div class="router-box">
             <a class="router-box-item active" href="#">
-              <i class="fa fa-newspaper-o" aria-hidden="true" />
+              <b-icon icon="lightning" class="mr-2" />
               <span class="name">最新内容</span>
             </a>
             <a class="router-box-item " href="#">
-              <i class="fa fa-thumbs-o-up" aria-hidden="true" />
+              <b-icon icon="brightness-high" class="mr-2" />
               <span class="name">近期热门</span>
             </a>
             <a class="router-box-item " href="#">
-              <i class="fa fa-globe" aria-hidden="true" />
+              <b-icon icon="gear" class="mr-2" />
               <span class="name">为你推荐</span>
             </a>
           </div>
@@ -22,13 +22,13 @@
             <h5 class="tech-square-title mt0 mb15">其他社区</h5>
             <a class="tech-square-item " href="#" target="_blank">
               <span class="tech-square-item-icon">
-                <img src="">
+                <b-icon icon="flag" variant="success" />
               </span>
               <span>博客园</span>
             </a>
             <a class="tech-square-item " href="https://github.com/liuzhenyulive" target="_blank">
               <span class="tech-square-item-icon">
-                <img src="">
+                <b-icon icon="cloud" variant="success" />
               </span>
               <span>Github</span>
             </a>
@@ -52,9 +52,7 @@
             </a>
 
             <a class="tech-square-item " href="#">
-              <span class="tech-square-item-icon">
-                <i class="fa fa-tags" aria-hidden="true" />
-              </span>
+              <b-icon icon="tags" class="tech-square-item-icon" variant="warning"/>
               <span>更多分类</span>
             </a>
           </div>

@@ -19,7 +19,7 @@
         class="mr-2"
         :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)+'#comment'"
       >
-        评论({{ content.commentsNum }})
+        评论 ({{ content.commentsNum }})
       </b-link>
       <b-link
         class="mr-2"
@@ -27,7 +27,7 @@
       >
         阅读({{ content.hits }})
       </b-link>
-      <b-link class="mr-2">
+      <b-link class="mr-2" href="#">
         {{ content.created | formatDate }}
       </b-link>
     </b-list-group-item>
@@ -83,8 +83,7 @@ export default {
   .pagination {
     justify-content: center;
   }
-
-  .card-title a{
+  .card-title a {
     display: inline;
     font-weight: 500;
     font-size: 18px;
