@@ -32,7 +32,7 @@
       </b-link>
     </b-list-group-item>
     <b-card class="mb-0 border-0 text-center">
-      <b-pagination-nav :link-gen="linkGen" :number-of-pages="getPageNums" use-router />
+      <b-pagination-nav :link-gen="linkGen" :number-of-pages="data.totalPage" :value="data.pageNum" limit="10" use-router />
     </b-card>
   </b-list-group>
 </template>
@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     linkGen(pageNum) {
-      return pageNum === 1 ? '?' : `?page=${pageNum}`
+      return `/index/${pageNum}`
     }
   }
 }

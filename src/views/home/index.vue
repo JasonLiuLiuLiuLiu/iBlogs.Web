@@ -38,16 +38,12 @@
             <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
             <a class="tech-square-item " href="/channel/frontend">
-              <span class="tech-square-item-icon">
-                <img src="https://avatar-static.segmentfault.com/399/739/3997397795-5a6edc1c3167f_small">
-              </span>
+              <b-icon icon="display" class="tech-square-item-icon" variant="danger"/>
               <span>前端</span>
             </a>
 
             <a class="tech-square-item " href="/channel/backend">
-              <span class="tech-square-item-icon">
-                <img src="https://avatar-static.segmentfault.com/199/890/1998904068-5a6edc3e40de1_small">
-              </span>
+              <b-icon icon="cloud-arrow-down" class="tech-square-item-icon" variant="success"/>
               <span>后端</span>
             </a>
 
