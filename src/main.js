@@ -10,6 +10,7 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootswatch/dist/litera/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/styles/custom.css'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)

@@ -1,24 +1,20 @@
 <template>
-  <div>
-    <b-nav tabs>
-      <b-nav-item>热度</b-nav-item>
-      <b-nav-item>时间</b-nav-item>
-      <b-nav-item>随机</b-nav-item>
-    </b-nav>
-    <b-card v-for="content in data.list" class="mb-3">
-      <b-card-title>{{ content.title }}</b-card-title>
+  <b-list-group class="list-group-flush">
+    <b-list-group-item v-for="content in data.list" :key="content.id" class="flex-column align-items-start post-item">
+      <b-card-title>
+        <b-link
+          class="mr-2"
+          :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)"
+        >
+          {{ content.title }}
+        </b-link>
+      </b-card-title>
       <b-card-text
         class="RichText ztext CopyrightRichText-richText"
         itemprop="text"
       >
         {{ content.content }}...
       </b-card-text>
-      <b-link
-        class="mr-2"
-        :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)"
-      >
-        阅读全文
-      </b-link>
       <b-link
         class="mr-2"
         :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)+'#comment'"
@@ -31,40 +27,14 @@
       >
         阅读({{ content.hits }})
       </b-link>
-
       <b-link class="mr-2">
         {{ content.created | formatDate }}
       </b-link>
-
+    </b-list-group-item>
+    <b-card class="mb-0 border-0 text-center">
+      <b-pagination-nav :link-gen="linkGen" :number-of-pages="getPageNums" use-router />
     </b-card>
-    <div class="overflow-auto">
-      <b-pagination-nav :link-gen="linkGen" :number-of-pages="10" use-router />
-    </div>
-    <div v-if="displayType=='index'" class="lists-navigator clearfix">
-      <ol class="page-navigator">
-        <li v-if="data.pageNum>1" class="prev"><a :href="'/index/'+(data.pageNum-1)">←</a></li>
-        <li v-for="index in getPageNums" :class="index==data.pageNum?'current':''"><a
-          :href="'/index/'+index"
-        >{{ index }}</a>
-        </li>
-        <li v-if="data.pageNum<data.totalPage" class="next"><a :href="'/index/'+(data.pageNum+1)">→</a></li>
-      </ol>
-    </div>
-    <div v-else class="lists-navigator clearfix">
-      <ol class="page-navigator">
-        <li v-if="data.pageNum>1" class="prev"><a
-          :href="'/'+displayType+'/'+encodeURIComponent(displayMeta)+'/'+(data.pageNum-1)"
-        >←</a></li>
-        <li v-for="index in getPageNums" :class="index==data.pageNum?'current':''"><a
-          :href="'/'+displayType+'/'+encodeURIComponent(displayMeta)+'/'+index"
-        >{{ index }}</a>
-        </li>
-        <li v-if="data.pageNum<data.totalPage" class="next"><a
-          :href="'/'+displayType+'/'+encodeURIComponent(displayMeta)+'/'+(data.pageNum+1)"
-        >→</a></li>
-      </ol>
-    </div>
-  </div>
+  </b-list-group>
 </template>
 <script>
 
@@ -110,5 +80,30 @@ export default {
 }
 </script>
 <style>
+  .pagination {
+    justify-content: center;
+  }
 
+  .card-title a{
+    display: inline;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #212121;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .card-text {
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.5;
+    color: #888;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+  }
 </style>

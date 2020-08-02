@@ -1,5 +1,5 @@
 <template>
-  <b-card>
+  <b-card class="mb-0 border-right-0 border-left-0 border-top-0 border-bottom-2">
     <div class="GlobalWrite">
       <div class="GlobalWrite-nav">
         <a class="GlobalWrite-navItem" href="https://cnblogs.com/coderayu" target="_blank" rel="noopener noreferrer"

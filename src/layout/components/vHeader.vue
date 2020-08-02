@@ -17,9 +17,10 @@
           <span class="navbar-toggler-icon" />
         </button>
         <b-collapse id="navbarResponsive" class="collapse navbar-collapse">
-          <b-navbar-nav>
+          <b-navbar-nav class="ml-auto">
             <b-nav-item href="../help/">Help</b-nav-item>
             <b-nav-item href="../help/">Blog</b-nav-item>
+            <b-nav-item href="../help/">RSS</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-container>

@@ -1,5 +1,5 @@
 <template>
-  <b-card class="Card">
+  <b-card class="mb-0 border-right-0 border-left-0 border-top-0 border-bottom-2">
     <ul class="GlobalSideBar-navList">
       <li class="GlobalSideBar-navItem GlobalSideBar-starItem">
         <a class="Button GlobalSideBar-navLink Button--plain">
