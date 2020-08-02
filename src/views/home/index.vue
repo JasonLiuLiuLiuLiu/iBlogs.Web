@@ -38,17 +38,17 @@
             <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
             <a class="tech-square-item " href="/channel/frontend">
-              <b-icon icon="display" class="tech-square-item-icon" variant="danger"/>
+              <b-icon icon="display" class="tech-square-item-icon" variant="danger" />
               <span>前端</span>
             </a>
 
             <a class="tech-square-item " href="/channel/backend">
-              <b-icon icon="cloud-arrow-down" class="tech-square-item-icon" variant="success"/>
+              <b-icon icon="cloud-arrow-down" class="tech-square-item-icon" variant="success" />
               <span>后端</span>
             </a>
 
             <a class="tech-square-item " href="#">
-              <b-icon icon="tags" class="tech-square-item-icon" variant="warning"/>
+              <b-icon icon="tags" class="tech-square-item-icon" variant="warning" />
               <span>更多分类</span>
             </a>
           </div>
@@ -59,6 +59,7 @@
             :display-meta="displayMeta"
             :order-type="orderType"
             :data="data"
+            @getContentsByNum="getContentsByNum"
           />
         </b-col>
         <b-col class="col-md-3 right mt-2">
@@ -217,6 +218,10 @@ export default {
     })
   },
   methods: {
+    getContentsByNum(pageNum) {
+      const pageSize = this.$store.state.options.options.PageSize
+      this.getContents(pageNum, pageSize)
+    },
     getContents(pageNum, pageSize) {
       page(pageNum, pageSize).then(response => {
         this.data = response.data

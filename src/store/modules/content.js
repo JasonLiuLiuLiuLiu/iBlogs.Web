@@ -26,7 +26,7 @@ const content = {
     }
   },
   actions: {
-    getOptions({ commit }, content) {
+    setContent({ commit }, content) {
       commit('SET_CONTENT', content)
     }
   }

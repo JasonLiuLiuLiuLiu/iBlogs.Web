@@ -32,7 +32,7 @@
       </b-link>
     </b-list-group-item>
     <b-card class="mb-0 border-0 text-center">
-      <b-pagination-nav :link-gen="linkGen" :number-of-pages="data.totalPage" :value="data.pageNum" limit="10" use-router />
+      <b-pagination-nav :link-gen="linkGen" :number-of-pages="data.totalPage" :value="data.pageNum" limit="10" use-router @change="indexChanged" />
     </b-card>
   </b-list-group>
 </template>
@@ -49,32 +49,12 @@ export default {
     }
   },
   props: ['displayType', 'displayMeta', 'orderType', 'data'],
-  computed: {
-    getPageNums: function() {
-      let startIndex = this.data.pageNum - 2
-      if (startIndex < 1) {
-        startIndex = 1
-      }
-      let endIndex = this.data.pageNum + 2
-      if (endIndex - startIndex < 4) {
-        endIndex = startIndex + 4
-      }
-      if (endIndex > this.data.totalPage) {
-        endIndex = this.data.totalPage
-      }
-      const nums = [1]
-      for (let i = startIndex; i <= endIndex; i++) {
-        if (i !== 1 && i !== this.data.totalPage) {
-          nums.push(i)
-        }
-      }
-      nums.push(this.data.totalPage)
-      return nums
-    }
-  },
   methods: {
     linkGen(pageNum) {
       return `/index/${pageNum}`
+    },
+    indexChanged(pageNum) {
+      this.$emit('getContentsByNum', pageNum)
     }
   }
 }
