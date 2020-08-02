@@ -18,9 +18,12 @@
         </button>
         <b-collapse id="navbarResponsive" class="collapse navbar-collapse">
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="../help/">Help</b-nav-item>
-            <b-nav-item href="../help/">Blog</b-nav-item>
-            <b-nav-item href="../help/">RSS</b-nav-item>
+            <b-nav-item href="../help/">归档</b-nav-item>
+            <b-nav-item href="../help/">关于</b-nav-item>
+            <b-nav-item href="../help/">订阅</b-nav-item>
+            <b-nav-form>
+              <b-form-input size="sm" class="mr-sm-2" placeholder="搜索"></b-form-input>
+            </b-nav-form>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
