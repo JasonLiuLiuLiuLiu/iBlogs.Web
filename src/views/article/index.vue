@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <b-container>
     <v-article :content="content" />
     <share :site-url="this.$store.state.options.options.SiteUrl" :content-id="content.id" :content-title="content.title" />
     <comment :content="content" />
-  </div>
+  </b-container>
 </template>
 
 <script>

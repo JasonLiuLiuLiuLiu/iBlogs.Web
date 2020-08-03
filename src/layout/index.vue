@@ -15,7 +15,7 @@
               </b-card-text>
               <b-card-text class="mt-2 mb-0">
                 <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-                  感谢又拍云提供CDN加速 !
+                  本站由 又拍云 提供CDN/云存储服务
                 </a>
               </b-card-text>
             </b-card>

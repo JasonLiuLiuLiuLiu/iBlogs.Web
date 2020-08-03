@@ -47,5 +47,104 @@ export default {
 }
 </script>
 <style>
+  .post-bottom-bar {
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 48px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff
+  }
 
+  .post-bottom-bar .bottom-bar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px
+  }
+
+  .post-bottom-bar .social-share {
+    font-size: 14px;
+    line-height: 48px;
+    margin: 0 0 0 10px;
+    color: #313131
+  }
+
+  .post-bottom-bar .bottom-bar-item a {
+    font-size: 14px;
+    line-height: 48px;
+    margin: 0;
+    padding: 12px;
+    cursor: pointer;
+    color: #313131;
+    border: 0;
+    background: 0 0
+  }
+
+  .post-bottom-bar .bottom-bar-item a:hover {
+    color: #eb5055
+  }
+
+  .post-bottom-bar .social-share .bottom-bar-item {
+    padding: 4px
+  }
+
+  .post-bottom-bar .social-share .bottom-bar-item a {
+    font-size: 13px;
+    padding: 4px 12px;
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+    border-radius: 15px
+  }
+
+  .post-bottom-bar .social-share .bottom-bar-item a:hover {
+    color: #5f5f5f;
+    background-color: #f7f7f7
+  }
+
+  .post-bottom-bar .bottom-bar-item.bottom-bar-facebook a {
+    color: #fff;
+    background-color: #4267b2
+  }
+
+  .post-bottom-bar .bottom-bar-item.bottom-bar-twitter a {
+    color: #fff;
+    background-color: #1b95e0
+  }
+
+  .post-bottom-bar .bottom-bar-item.bottom-bar-weibo a {
+    color: #fff;
+    background-color: #db4437
+  }
+
+  .post-bottom-bar .bottom-bar-item.bottom-bar-qrcode a {
+    color: #fff;
+    background-color: #4caf50
+  }
+
+  .post-bottom-bar.animated {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+  }
+
+  .post-bottom-bar.animated.pinned {
+    -webkit-animation-name: pinned;
+    animation-name: pinned
+  }
+
+  .post-bottom-bar.headroom--top {
+    -webkit-animation-name: pinned;
+    animation-name: pinned
+  }
+
+  .post-bottom-bar.animated.unpinned {
+    -webkit-animation-name: unpinned;
+    animation-name: unpinned
+  }
+  #fixedTools{
+    display: none;
+  }
 </style>
