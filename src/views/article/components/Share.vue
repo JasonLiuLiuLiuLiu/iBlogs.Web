@@ -26,8 +26,6 @@
           target="_blank"
           rel="nofollow"
         >QRSetCode</a></span>
-      </div>
-      <div class="bottom-bar-items">
         <span v-if="this.$store.state.content.content.pre!=null" class="bottom-bar-item"><a
           :href="'/article/'+this.$store.state.content.content.pre"
         >←</a></span>

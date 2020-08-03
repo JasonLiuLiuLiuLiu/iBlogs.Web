@@ -5,7 +5,7 @@
     <footer id="footer">
       <b-container>
         <b-row>
-          <b-col cols="4" class="meta-footer">
+          <b-col md="4" class="meta-footer">
             <b-card class="border-0">
               <b-card-img src="/static/img/logo.png" alt="" class="logo" top />
               <b-card-img src="/static/img/upyun_logo5.png" alt="本站由又拍云加速" class="upyun-logo" top />
@@ -21,7 +21,7 @@
             </b-card>
           </b-col>
 
-          <b-col cols="4" class="meta-footer">
+          <b-col md="4" class="meta-footer">
             <div class="h4"><b-icon class="h5 mb-1 mr-1" icon="heart" />关注博主</div>
             <div style="margin: 0 0">
               <div style="float:right;width:35%;"><img src="https://disk.iblogs.site/pic/coderayu.png" alt="阿宇"></div>
@@ -31,7 +31,7 @@
             </div>
           </b-col>
 
-          <b-col cols="4" class="meta-footer">
+          <b-col md="4" class="meta-footer">
             <div class="h4"><b-icon class="h5 mb-1 mr-1" icon="envelope" />联系博主</div>
             <div style="margin: 0 0">
               <div style="float:right;width:35%;"><img
