@@ -56,6 +56,9 @@
         <span class="ml5"><a href="/sitemap.xml" target="_blank">Site Map</a></span>
       </div>
     </b-container>
+    <div id="fixedTools" class="hidden-xs hidden-sm">
+      <a id="backtop" class="border-bottom" href="#">回顶部</a>
+    </div>
   </footer>
 </template>
 <script>

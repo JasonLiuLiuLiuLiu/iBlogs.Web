@@ -3,9 +3,6 @@
     <v-Header />
     <app-main />
     <v-Footer />
-    <div id="fixedTools" class="hidden-xs hidden-sm">
-      <a id="backtop" class="border-bottom" href="#">回顶部</a>
-    </div>
   </div>
 </template>
 
