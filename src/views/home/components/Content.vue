@@ -1,5 +1,6 @@
 <template>
   <b-list-group class="list-group-flush">
+    <b-breadcrumb :items="menuItems" class="mt-2" />
     <b-list-group-item v-for="content in data.list" :key="content.id" class="flex-column align-items-start post-item">
       <b-card-title>
         <b-link
@@ -45,10 +46,10 @@ export default {
   filters: {
     formatDate(time) {
       const date = new Date(time)
-      return dateFormat(date, 'yyyy-MM-dd')
+      return dateFormat(date, 'yyyy年MM月dd日')
     }
   },
-  props: ['displayType', 'displayMeta', 'orderType', 'data'],
+  props: ['displayType', 'displayMeta', 'orderType', 'data', 'menuItems'],
   methods: {
     linkGen(pageNum) {
       return `/index/${pageNum}`

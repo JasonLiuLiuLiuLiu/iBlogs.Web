@@ -8,9 +8,9 @@
         <b-col class="col-md-7 middle">
           <b-breadcrumb :items="items" class="mt-2" />
           <b-list-group class="mb-2">
-            <b-list-group-item v-for="(archive,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'../archive/'+encodeURIComponent(archive.date)+'/1'">
-              {{ archive.date|formatDate }}
-              <b-badge variant="primary" pill>{{ archive.count }}</b-badge>
+            <b-list-group-item v-for="(category,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'../category/'+encodeURIComponent(category.name)+'/1'">
+              {{ category.name }}
+              <b-badge variant="primary" pill>{{ category.count }}</b-badge>
             </b-list-group-item>
           </b-list-group>
         </b-col>
@@ -24,20 +24,14 @@
 <script>
 import Right from './components/SideBar/right'
 import Left from './components/SideBar/left'
-import { archives } from '@/api/content.js'
-import { dateFormat } from '../../utils/dateUtils'
+import { categories } from '@/api/metadata.js'
 
 export default {
-  name: 'Archives',
+  name: 'Categories',
   components: { Right, Left },
-  filters: {
-    formatDate(time) {
-      const date = new Date(time)
-      return dateFormat(date, 'yyyy年MM月dd')
-    }
-  },
   data() {
     return {
+      total: 17,
       list: [],
       items: [
         {
@@ -45,14 +39,15 @@ export default {
           href: '/'
         },
         {
-          text: '文章归档',
+          text: '所有分类',
           active: true
         }]
     }
   },
   created() {
-    archives().then(response => {
-      this.list = response.data
+    categories(1, 10000).then(response => {
+      this.total = response.data.total
+      this.list = response.data.list
     })
   }
 }

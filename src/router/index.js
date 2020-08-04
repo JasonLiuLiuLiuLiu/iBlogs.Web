@@ -56,14 +56,14 @@ export const constantRoutes = [
         component: () => import('@/views/home/archives')
       },
       {
-        path: 'allTags',
-        name: 'allTags',
-        component: () => import('@/views/home/allTags')
+        path: 'tags',
+        name: 'tags',
+        component: () => import('@/views/home/tags')
       },
       {
-        path: 'allCategories',
-        name: 'allCategories',
-        component: () => import('@/views/home/allCategories')
+        path: 'categories',
+        name: 'categories',
+        component: () => import('@/views/home/categories')
       }]
   },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
