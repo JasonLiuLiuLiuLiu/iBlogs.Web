@@ -262,7 +262,7 @@ export default {
     font-size: 1em;
   }
 
-  .output_wrapper h1 {
+  .output_wrapper h2 {
     border-bottom: 2px solid rgb(239, 112, 96);
     font-size: 1.3em;
   }
