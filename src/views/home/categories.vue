@@ -6,7 +6,7 @@
           <Left />
         </b-col>
         <b-col class="col-md-7 middle">
-          <b-breadcrumb :items="items" class="mt-2" />
+          <b-breadcrumb :items="items" class="mt-2 pr-2 pb-2" />
           <b-list-group class="mb-2">
             <b-list-group-item v-for="(category,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'../category/'+encodeURIComponent(category.name)+'/1'">
               {{ category.name }}

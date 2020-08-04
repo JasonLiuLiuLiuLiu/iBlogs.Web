@@ -1,6 +1,6 @@
 <template>
   <b-list-group class="list-group-flush">
-    <b-breadcrumb :items="menuItems" class="mt-2" />
+    <b-breadcrumb :items="menuItems" class="mt-2 pr-2 pb-2" />
     <b-list-group-item v-for="content in data.list" :key="content.id" class="flex-column align-items-start post-item">
       <b-card-title>
         <b-link

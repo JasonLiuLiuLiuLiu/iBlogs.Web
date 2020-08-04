@@ -15,7 +15,7 @@
             @getContentsByNum="getContentsByNum"
           />
         </b-col>
-        <b-col class="col-md-3 right mt-2">
+        <b-col class="col-md-3 right">
           <Right />
         </b-col>
       </b-row>

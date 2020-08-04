@@ -1,8 +1,10 @@
 <template>
   <div>
     <div>
-      <div class="alert alert-warning" role="alert">
-        <a class="report" href="https://iblogs.site">欢迎访问我的网站</a>
+      <div class="mt-2 alert alert-warning" role="alert">
+        <div id="marquee">
+          <a id="text">欢迎来到我的博客~~~</a>
+        </div>
       </div>
     </div>
     <div class="activity-recommend mb30">
@@ -18,8 +20,8 @@
           <div class="activity-detail">
             <div class="activity-detail-title">Always coding,Always writing</div>
             <span class="activity-detail-base" /><span class="dot">·</span>09-19&nbsp;&nbsp;周六<span
-            class="dot"
-          >·</span><span class="activity-state">内测中</span>
+              class="dot"
+            >·</span><span class="activity-state">内测中</span>
           </div>
         </a>
         <a class="activity-recommend-item" href="/e/1160000023426476">
@@ -32,8 +34,8 @@
           <div class="activity-detail">
             <div class="activity-detail-title">Always coding,Always writing</div>
             <span class="activity-detail-base" /><span class="dot">·</span>09-19&nbsp;&nbsp;周六<span
-            class="dot"
-          >·</span><span class="activity-state">内测中</span>
+              class="dot"
+            >·</span><span class="activity-state">内测中</span>
           </div>
         </a>
       </div>
@@ -98,8 +100,8 @@
           <div class="activity-detail">
             <div class="activity-detail-title">Always coding,Always writing</div>
             <span class="activity-detail-base" /><span class="dot">·</span>09-19&nbsp;&nbsp;周六<span
-            class="dot"
-          >·</span><span class="activity-state">内测中</span>
+              class="dot"
+            >·</span><span class="activity-state">内测中</span>
           </div>
         </a>
       </div>
@@ -115,6 +117,50 @@ export default {
 }
 </script>
 <style>
+  @keyframes slide {
+    from { left: 100%;}
+    to { left: -100%;}
+  }
+  @-webkit-keyframes slide {
+    from { left: 100%;}
+    to { left: -100%;}
+  }
+
+  #marquee {
+    color:red;
+    width:100%;
+    height:10px;
+    line-height:10px;
+    overflow:hidden;
+    position:relative;
+  }
+
+  #text {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:10px;
+    font-size:10px;
+    animation-name: slide;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: slide;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+  .right .report {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    line-height: 30px;
+    display: block;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .right .activity-recommend .activity-title {
     font-size: 16px;
     font-weight: 500;
