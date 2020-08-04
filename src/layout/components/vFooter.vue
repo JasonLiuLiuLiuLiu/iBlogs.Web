@@ -45,7 +45,7 @@
           </div>
         </b-col>
       </b-row>
-      <div class="copyright">
+      <div class="copyright mb-3">
         <a href="https://github.com/liuzhenyulive/iblogs" target="_blank">iBlogs.site</a>
         ♥
         <a href="https://github.com/liuzhenyulive" target="_blank">ZhenYu.Liu</a>

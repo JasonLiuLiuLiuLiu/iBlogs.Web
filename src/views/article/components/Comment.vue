@@ -2,32 +2,41 @@
   <div id="@article.Id" class="comment-container">
     <div id="comments" class="clearfix">
       <form v-if="content.allowComment" id="comment-form" method="post" target="#" class="comment-form">
-        <input
-          id="author"
-          v-model="commentForm.author"
-          name="author"
-          maxlength="12"
-          class="form-control input-control clearfix"
-          placeholder="姓名 (*)"
-          required
-        >
-        <input
-          id="mail"
-          v-model="commentForm.mail"
-          type="email"
-          name="mail"
-          class="form-control input-control clearfix"
-          placeholder="邮箱 (*)"
-          required
-        >
-        <input
-          id="url"
-          v-model="commentForm.url"
-          type="url"
-          name="url"
-          class="form-control input-control clearfix"
-          placeholder="网址 (http://)"
-        >
+        <b-row>
+          <b-col>
+            <input
+              id="author"
+              v-model="commentForm.author"
+              name="author"
+              maxlength="12"
+              class="form-control input-control clearfix"
+              placeholder="姓名 (*)"
+              required
+            >
+          </b-col>
+          <b-col>
+            <input
+              id="mail"
+              v-model="commentForm.mail"
+              type="email"
+              name="mail"
+              class="form-control input-control clearfix"
+              placeholder="邮箱 (*)"
+              required
+            >
+          </b-col>
+          <b-col>
+            <input
+              id="url"
+              v-model="commentForm.url"
+              type="url"
+              name="url"
+              class="form-control input-control clearfix"
+              placeholder="网址 (http://)"
+            >
+          </b-col>
+        </b-row>
+
         <textarea
           id="textarea"
           v-model="commentForm.content"
@@ -179,7 +188,13 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
+  input:focus,textarea:focus {
+    outline: none 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
   .pagination {
     justify-content: center;
   }
@@ -233,7 +248,7 @@ export default {
   }
   .comment-view {
     padding: 20px;
-    cursor: pointer
+    cursor: pointer;
   }
   .comment-view:hover .comment-meta .comment-reply {
     display: block
@@ -291,11 +306,6 @@ export default {
   #comments .lists-navigator ol li.current a {
     color: #eb5055
   }
-  #comments {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px
-  }
 
   #comments .page-navigator {
     margin: 0
@@ -335,23 +345,19 @@ export default {
     outline: 0
   }
 
-  .comment-form .form-control:focus {
-    border-color: #eb5055;
-    outline: 0
-  }
-
   .comment-form textarea.form-control {
     overflow: hidden;
     height: 150px;
     padding: 10px 0;
     resize: none;
+    border: none;
     border-radius: 0
   }
 
   .comment-form .input-control {
     float: left;
     width: 100%;
-    max-width: 206px;
+    border:none;
     border-bottom: 1px dashed #ddd;
     border-radius: 0
   }
