@@ -52,7 +52,11 @@ export default {
   props: ['displayType', 'displayMeta', 'orderType', 'data', 'menuItems'],
   methods: {
     linkGen(pageNum) {
-      return `/index/${pageNum}`
+      if (this.displayType === 'index') {
+        return `/index/${pageNum}`
+      } else {
+        return `/${this.displayType}/${encodeURIComponent(this.displayMeta)}/${pageNum}`
+      }
     },
     indexChanged(pageNum) {
       this.$emit('getContentsByNum', pageNum)

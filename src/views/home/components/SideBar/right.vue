@@ -83,7 +83,7 @@
           <a href="#" class="label badge">文件</a>
           <a href="#" class="label badge">学校</a>
           <a href="#" class="label badge">主题</a>
-          <a href="../tags" class="label badge">更多</a>
+          <a href="/tags" class="label badge">更多</a>
         </div>
       </div>
     </div>

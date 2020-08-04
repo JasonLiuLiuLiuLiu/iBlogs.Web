@@ -42,7 +42,7 @@
         <span>后端</span>
       </a>
 
-      <a class="tech-square-item " href="../categories">
+      <a class="tech-square-item " href="/categories">
         <b-icon icon="tags" class="tech-square-item-icon" variant="warning" />
         <span>更多分类</span>
       </a>

@@ -51,69 +51,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getOptions').then(() => {
-      let pageNum = this.$route.params.id
-      const pageSize = this.$store.state.options.options.PageSize
-      if (!pageNum) {
-        pageNum = 1
-      }
-      if (!this.$route.params.type) {
-        this.getContents(pageNum, pageSize)
-      } else {
-        const displayType = this.$route.params.type
-        const meta = this.$route.params.meta
-        this.displayType = displayType
-        this.displayMeta = meta
-        if (displayType === 'category') {
-          this.byCategory(pageNum, pageSize)
-          this.menuItems = [
-            {
-              text: '首页',
-              href: '/'
-            },
-            {
-              text: '所有分类',
-              href: '/categories'
-            },
-            {
-              text: meta,
-              active: true
-            }]
-        } else if (displayType === 'archive') {
-          this.displayMeta = Number(this.$route.params.meta)
-          this.byArchive(pageNum, pageSize)
-          this.menuItems = [
-            {
-              text: '首页',
-              href: '/'
-            },
-            {
-              text: '文章归档',
-              href: '/archives'
-            },
-            {
-              text: this.formatDate(meta),
-              active: true
-            }]
-        } else {
-          this.byTag(pageNum, pageSize)
-          this.menuItems = [
-            {
-              text: '首页',
-              href: '/'
-            },
-            {
-              text: '所有标签',
-              href: '/tags'
-            },
-            {
-              text: meta,
-              active: true
-            }]
-        }
-      }
-      this.loading = false
-    })
+    this.loadContents(this.$route.params.id)
   },
   methods: {
     formatDate(time) {
@@ -122,8 +60,71 @@ export default {
       return dateFormat(date, 'yyyy年MM月dd日')
     },
     getContentsByNum(pageNum) {
-      const pageSize = this.$store.state.options.options.PageSize
-      this.getContents(pageNum, pageSize)
+      this.loadContents(pageNum)
+    },
+    loadContents(pageNum) {
+      this.$store.dispatch('getOptions').then(() => {
+        const pageSize = this.$store.state.options.options.PageSize
+        if (!pageNum) {
+          pageNum = 1
+        }
+        if (!this.$route.params.type) {
+          this.getContents(pageNum, pageSize)
+        } else {
+          const displayType = this.$route.params.type
+          const meta = this.$route.params.meta
+          this.displayType = displayType
+          this.displayMeta = meta
+          if (displayType === 'category') {
+            this.byCategory(pageNum, pageSize)
+            this.menuItems = [
+              {
+                text: '首页',
+                href: '/'
+              },
+              {
+                text: '所有分类',
+                href: '/categories'
+              },
+              {
+                text: meta,
+                active: true
+              }]
+          } else if (displayType === 'archive') {
+            this.displayMeta = Number(this.$route.params.meta)
+            this.byArchive(pageNum, pageSize)
+            this.menuItems = [
+              {
+                text: '首页',
+                href: '/'
+              },
+              {
+                text: '文章归档',
+                href: '/archives'
+              },
+              {
+                text: this.formatDate(meta),
+                active: true
+              }]
+          } else {
+            this.byTag(pageNum, pageSize)
+            this.menuItems = [
+              {
+                text: '首页',
+                href: '/'
+              },
+              {
+                text: '所有标签',
+                href: '/tags'
+              },
+              {
+                text: meta,
+                active: true
+              }]
+          }
+        }
+        this.loading = false
+      })
     },
     getContents(pageNum, pageSize) {
       page(pageNum, pageSize).then(response => {
