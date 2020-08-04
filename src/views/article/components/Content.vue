@@ -262,7 +262,7 @@ export default {
     font-size: 1em;
   }
 
-  .output_wrapper h3 {
+  .output_wrapper h1 {
     border-bottom: 2px solid rgb(239, 112, 96);
     font-size: 1.3em;
   }
@@ -276,14 +276,6 @@ export default {
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
     margin-right: 3px;
-  }
-
-  .output_wrapper h3::after {
-    display: inline-block;
-    content: " ";
-    vertical-align: bottom;
-    border-bottom: 36px solid rgb(239, 235, 233);
-    border-right: 20px solid transparent;
   }
 
   .output_wrapper ul, .output_wrapper ol {
