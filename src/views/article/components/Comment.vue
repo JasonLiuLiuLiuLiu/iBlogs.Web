@@ -42,7 +42,6 @@
       </form>
 
       <span v-else class="response">评论已关闭.</span>
-
       <div id="comment-top" />
       <ol v-for="comment in this.comments" class="comment-list border-0">
         <li :id="'li-comment-'+comment.id" class="comment-body comment-parent comment-odd">
@@ -67,7 +66,7 @@
         </li>
       </ol>
       <b-card class="mb-0 border-0 text-center">
-        <b-pagination-nav :link-gen="linkGen" :number-of-pages="5" :value="2" limit="10" use-router @change="" />
+        <b-pagination-nav :link-gen="linkGen" :number-of-pages="totalPage" :value="pageNum" limit="10" use-router @change="getComments" />
       </b-card>
     </div>
   </div>
@@ -172,7 +171,7 @@ export default {
       })
     },
     linkGen(pageNum) {
-      return `/index/${pageNum}`
+      return `/article/${this.content.id}`
     },
     indexChanged(pageNum) {
       this.$emit('getContentsByNum', pageNum)
