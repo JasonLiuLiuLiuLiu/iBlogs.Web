@@ -25,9 +25,6 @@ export default {
         mobile: this.device === 'mobile'
       }
     }
-  },
-  beforeCreate() {
-    this.$store.dispatch('getOptions')
   }
 }
 </script>

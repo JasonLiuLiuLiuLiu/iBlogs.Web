@@ -47,7 +47,6 @@ export default {
       index(encodeURIComponent(url)).then(response => {
         this.content = response.data
         document.title = getPageTitle(this.content.title)
-        this.$store.dispatch('getOptions', response.data)
       })
     }
   }

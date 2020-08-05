@@ -47,21 +47,21 @@
           <li class="list-group-item activity-recommend-item"><span class="blog-info-icons"> <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-award"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg></span> <span
             class="badge
            pull-right"
-          >239</span>文章数目</li>
+          >{{ this.$store.state.options.options.ContentCount }}</span>文章数目</li>
           <li class="list-group-item activity-recommend-item"> <span class="blog-info-icons"> <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg></span>
             <span
               class="badge
            pull-right"
-            >7093</span>评论数目</li>
+            >{{ this.$store.state.options.options.CommentCount }}</span>评论数目</li>
           <li class="list-group-item activity-recommend-item"><span class="blog-info-icons"> <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg></span>
             <span
               class="badge
            pull-right"
-            >4年63天</span>运行天数</li>
+            >{{ this.$store.state.options.options.SiteInstallTime|formatDate }}</span>运行时间</li>
           <li class="list-group-item activity-recommend-item"><span class="blog-info-icons"> <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg></span> <span
             class="badge
            pull-right"
-          >1 天前</span>最后活动</li>
+          >{{ this.$store.state.options.options.LastActiveTime|formatDate }}前</span>最后活动</li>
         </ul>
       </div>
     </div>
@@ -69,20 +69,7 @@
       <div class="activity-title">标签云</div>
       <div class="activity-recommend-area">
         <div class="tags l-h-2x">
-          <a href="#" class="label badge">时候</a>
-          <a href="#" class="label badge">喜欢</a>
-          <a href="#" class="label badge">生活</a>
-          <a href="#" class="label badge">事情</a>
-          <a href="#" class="label badge">代码</a>
-          <a href="#" class="label badge">内容</a>
-          <a href="#" class="label badge">文章</a>
-          <a href="#" class="label badge">博客</a>
-          <a href="#" class="label badge">效果</a>
-          <a href="#" class="label badge">高中</a>
-          <a href="#" class="label badge">办法</a>
-          <a href="#" class="label badge">文件</a>
-          <a href="#" class="label badge">学校</a>
-          <a href="#" class="label badge">主题</a>
+          <a v-for="(tag,index) in this.$store.state.options.hotTags" :key="index" :href="'/tag/'+encodeURIComponent(tag.name)+'/1'" class="label badge">{{ tag.name }}</a>
           <a href="/tags" class="label badge">更多</a>
         </div>
       </div>
@@ -112,8 +99,19 @@
   </div>
 </template>
 <script>
+import { timeago } from '@/utils/index.js'
+
 export default {
-  name: 'Right'
+  name: 'Right',
+  filters: {
+    formatDate(time) {
+      const date = new Date(time)
+      return timeago(date.getTime())
+    }
+  },
+  beforeCreate() {
+    this.$store.dispatch('getOptions')
+  }
 }
 </script>
 <style>

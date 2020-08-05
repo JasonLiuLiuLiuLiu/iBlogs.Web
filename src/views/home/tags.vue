@@ -8,7 +8,7 @@
         <b-col class="col-md-7 middle">
           <b-breadcrumb :items="items" class="mt-2 pr-2 pb-2" />
           <b-list-group class="mb-2">
-            <b-list-group-item v-for="(tag,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'../tag/'+encodeURIComponent(tag.name)+'/1'">
+            <b-list-group-item v-for="(tag,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'/tag/'+encodeURIComponent(tag.name)+'/1'">
               {{ tag.name }}
               <b-badge variant="primary" pill>{{ tag.count }}</b-badge>
             </b-list-group-item>

@@ -2,15 +2,15 @@
   <div>
     <div class="router-box">
       <a class="router-box-item" href="/">
-        <b-icon icon="lightning" class="mr-2" />
+        <b-icon :icon="getIcon()" :variant="getVariant()" class="mr-2" />
         <span class="name">最新内容</span>
       </a>
       <a class="router-box-item " href="/hot">
-        <b-icon icon="brightness-high" class="mr-2" />
+        <b-icon :icon="getIcon()" :variant="getVariant()" class="mr-2" />
         <span class="name">近期热门</span>
       </a>
       <a class="router-box-item " href="/random">
-        <b-icon icon="gear" class="mr-2" />
+        <b-icon :icon="getIcon()" :variant="getVariant()" class="mr-2" />
         <span class="name">为你推荐</span>
       </a>
     </div>
@@ -18,13 +18,13 @@
       <h5 class="tech-square-title mt0 mb15">其他社区</h5>
       <a class="tech-square-item " href="https://www.cnblogs.com/coderayu" target="_blank">
         <span class="tech-square-item-icon">
-          <b-icon icon="flag" variant="success" />
+          <b-icon :icon="getIcon()" :variant="getVariant()" />
         </span>
         <span>博客园</span>
       </a>
       <a class="tech-square-item " href="https://github.com/liuzhenyulive" target="_blank">
         <span class="tech-square-item-icon">
-          <b-icon icon="cloud" variant="success" />
+          <b-icon :icon="getIcon()" :variant="getVariant()" />
         </span>
         <span>Github</span>
       </a>
@@ -32,14 +32,9 @@
     <div class="tech-square hidden-xs">
       <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
-      <a class="tech-square-item " href="/category/frontend">
-        <b-icon icon="display" class="tech-square-item-icon" variant="danger" />
-        <span>前端</span>
-      </a>
-
-      <a class="tech-square-item " href="/category/backend">
-        <b-icon icon="cloud-arrow-down" class="tech-square-item-icon" variant="success" />
-        <span>后端</span>
+      <a v-for="(category,index) in this.$store.state.options.hotCategories" :key="index" class="tech-square-item " :href="'/category/'+encodeURIComponent(category.name)+'/1'">
+        <b-icon :icon="getIcon()" class="tech-square-item-icon" :variant="getVariant()" />
+        <span>{{ category.name.length>5?category.name.substring(5):category.name }}</span>
       </a>
 
       <a class="tech-square-item " href="/categories">
@@ -51,7 +46,26 @@
 </template>
 <script>
 export default {
-  name: 'Left'
+  name: 'Left',
+  data() {
+    return { variants: ['success', 'warning', 'danger', 'info', 'primary'],
+      icons: ['display', 'box-seam', 'bug', 'chat-left', 'cloud', 'cloud-arrow-up', 'collection-play', 'cone', 'code-slash', 'cup', 'gem', 'gift', 'grid-fill', 'flag', 'gear', 'brightness-high', 'lightning'] }
+  },
+  beforeCreate() {
+    this.$store.dispatch('getOptions')
+  },
+  methods: {
+    getVariant() {
+      var index = Math.floor((Math.random() * this.variants.length))
+      console.log(index)
+      return this.variants[index]
+    },
+    getIcon() {
+      var index = Math.floor((Math.random() * this.icons.length))
+      console.log(index)
+      return this.icons[index]
+    }
+  }
 }
 </script>
 <style>
