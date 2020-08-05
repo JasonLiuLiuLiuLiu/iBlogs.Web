@@ -37,20 +37,6 @@ export const constantRoutes = [
     redirect: '/index',
     children: [
       {
-        path: 'index/:id?',
-        name: 'index',
-        component: () => import('@/views/home/index')
-      },
-      {
-        path: 'article/:slug',
-        name: 'article',
-        component: () => import('@/views/article/index')
-      },
-      {
-        path: ':type/:meta/:id?',
-        name: 'meta',
-        component: () => import('@/views/home/index')
-      }, {
         path: 'archives',
         name: 'archives',
         component: () => import('@/views/home/archives')
@@ -64,6 +50,21 @@ export const constantRoutes = [
         path: 'categories',
         name: 'categories',
         component: () => import('@/views/home/categories')
+      },
+      {
+        path: 'article/:slug',
+        name: 'article',
+        component: () => import('@/views/article/index')
+      },
+      {
+        path: ':orderType/:id?',
+        name: 'index',
+        component: () => import('@/views/home/index')
+      },
+      {
+        path: ':type/:meta/:id?',
+        name: 'meta',
+        component: () => import('@/views/home/index')
       }]
   },
   { path: '/404', component: () => import('@/views/404'), hidden: true },

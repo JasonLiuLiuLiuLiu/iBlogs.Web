@@ -1,10 +1,11 @@
 import router from './router'
-import getPageTitle from '@/utils/get-page-title'
+import NProgress from 'nprogress' // progress bar
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar
-  document.title = getPageTitle(to.meta.title)
+  NProgress.start()
   next()
+  NProgress.done()
 })
 
 router.afterEach(() => {

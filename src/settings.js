@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Always coding - 码农阿宇',
+  title: '码农阿宇',
 
   /**
    * @type {boolean} true | false

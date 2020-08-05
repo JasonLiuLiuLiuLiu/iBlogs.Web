@@ -1,22 +1,22 @@
 <template>
   <div>
     <div class="router-box">
-      <a class="router-box-item" href="#">
+      <a class="router-box-item" href="/">
         <b-icon icon="lightning" class="mr-2" />
         <span class="name">最新内容</span>
       </a>
-      <a class="router-box-item " href="#">
+      <a class="router-box-item " href="/hot">
         <b-icon icon="brightness-high" class="mr-2" />
         <span class="name">近期热门</span>
       </a>
-      <a class="router-box-item " href="#">
+      <a class="router-box-item " href="/random">
         <b-icon icon="gear" class="mr-2" />
         <span class="name">为你推荐</span>
       </a>
     </div>
     <div class="tech-square hidden-xs mb15">
       <h5 class="tech-square-title mt0 mb15">其他社区</h5>
-      <a class="tech-square-item " href="#" target="_blank">
+      <a class="tech-square-item " href="https://www.cnblogs.com/coderayu" target="_blank">
         <span class="tech-square-item-icon">
           <b-icon icon="flag" variant="success" />
         </span>
@@ -32,12 +32,12 @@
     <div class="tech-square hidden-xs">
       <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
-      <a class="tech-square-item " href="/channel/frontend">
+      <a class="tech-square-item " href="/category/frontend">
         <b-icon icon="display" class="tech-square-item-icon" variant="danger" />
         <span>前端</span>
       </a>
 
-      <a class="tech-square-item " href="/channel/backend">
+      <a class="tech-square-item " href="/category/backend">
         <b-icon icon="cloud-arrow-down" class="tech-square-item-icon" variant="success" />
         <span>后端</span>
       </a>

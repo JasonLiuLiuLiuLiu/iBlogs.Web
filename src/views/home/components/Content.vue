@@ -18,7 +18,7 @@
       </b-card-text>
       <b-link
         class="mr-2"
-        :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)+'#comment'"
+        :href="'/article/'+(content.slug&&content.slug!=null?encodeURIComponent(content.slug):content.id)+'#comments'"
       >
         评论 ({{ content.commentsNum }})
       </b-link>
@@ -28,7 +28,7 @@
       >
         阅读({{ content.hits }})
       </b-link>
-      <b-link class="mr-2" href="#">
+      <b-link class="mr-2" :href="'/archive/'+encodeURIComponent(content.created)+'/1'">
         {{ content.created | formatDate }}
       </b-link>
     </b-list-group-item>
@@ -49,11 +49,12 @@ export default {
       return dateFormat(date, 'yyyy年MM月dd日')
     }
   },
+  // eslint-disable-next-line vue/require-prop-types
   props: ['displayType', 'displayMeta', 'orderType', 'data', 'menuItems'],
   methods: {
     linkGen(pageNum) {
-      if (this.displayType === 'index') {
-        return `/index/${pageNum}`
+      if (!this.displayMeta) {
+        return `/${this.orderType}/${pageNum}`
       } else {
         return `/${this.displayType}/${encodeURIComponent(this.displayMeta)}/${pageNum}`
       }

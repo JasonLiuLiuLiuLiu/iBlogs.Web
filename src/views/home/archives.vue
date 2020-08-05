@@ -8,7 +8,7 @@
         <b-col class="col-md-7 middle">
           <b-breadcrumb :items="items" class="mt-2" />
           <b-list-group class="mb-2">
-            <b-list-group-item v-for="(archive,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'../archive/'+encodeURIComponent(archive.date)+'/1'">
+            <b-list-group-item v-for="(archive,index) in list" :key="index" class="d-flex justify-content-between align-items-center" :href="'/archive/'+encodeURIComponent(archive.date)+'/1'">
               {{ archive.date|formatDate }}
               <b-badge variant="primary" pill>{{ archive.count }}</b-badge>
             </b-list-group-item>

@@ -51,6 +51,31 @@ export default {
     }
   },
   created() {
+    this.orderType = this.$route.params.orderType == null ? 'index' : this.$route.params.orderType
+    switch (this.orderType) {
+      case 'hot':
+        this.menuItems = [
+          {
+            text: '首页',
+            href: '/'
+          },
+          {
+            text: '近期热门',
+            active: true
+          }]
+        break
+      case 'random':
+        this.menuItems = [
+          {
+            text: '首页',
+            href: '/'
+          },
+          {
+            text: '为你推荐',
+            active: true
+          }]
+        break
+    }
     this.loadContents(this.$route.params.id)
   },
   methods: {
@@ -69,7 +94,7 @@ export default {
           pageNum = 1
         }
         if (!this.$route.params.type) {
-          this.getContents(pageNum, pageSize)
+          this.getContents(pageNum, pageSize, this.orderType)
         } else {
           const displayType = this.$route.params.type
           const meta = this.$route.params.meta
@@ -126,8 +151,8 @@ export default {
         this.loading = false
       })
     },
-    getContents(pageNum, pageSize) {
-      page(pageNum, pageSize).then(response => {
+    getContents(pageNum, pageSize, orderType) {
+      page(pageNum, pageSize, orderType).then(response => {
         this.data = response.data
       })
     },
