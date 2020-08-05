@@ -188,15 +188,17 @@ export default {
   }
 }
 </script>
+<style>
+  .pagination {
+    justify-content: center;
+  }
+</style>
 <style scoped>
   input:focus,textarea:focus {
     outline: none 0 !important;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
-  }
-  .pagination {
-    justify-content: center;
   }
   .comment-view:hover .comment-meta .comment-reply {
     display: block
