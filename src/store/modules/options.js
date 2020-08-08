@@ -25,7 +25,7 @@ const options = {
       CommentCount: 0,
       SiteInstallTime: '2020-01-01',
       LastActiveTime: '2020-01-01',
-      SiteUrl: 'http://localhost:8090/',
+      SiteUrl: '/',
       PageSize: 10,
       SideBarCategoriesCount: 5,
       SideBarTagsCount: 5,
