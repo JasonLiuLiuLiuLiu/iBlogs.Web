@@ -11,3 +11,11 @@ export function getComments(cid, pageNum, pageSize) {
     }
   })
 }
+
+export function submitComment(comment) {
+  return request({
+    url: '/comment/submitComments',
+    method: 'post',
+    data: comment
+  })
+}

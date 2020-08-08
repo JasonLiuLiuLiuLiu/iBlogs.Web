@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import app from './modules/app'
-import options from "./modules/options";
-import content from "./modules/content";
+import options from './modules/options'
+import content from './modules/content'
 import getters from './getters'
 
 Vue.use(Vuex)

@@ -34,13 +34,14 @@ export function index(url) {
   })
 }
 
-export function page(pageNum, pageSize) {
+export function page(pageNum, pageSize, orderType) {
   return request({
     url: '/content/page',
     method: 'get',
     params: {
       pageNum,
-      pageSize
+      pageSize,
+      orderType
     }
   })
 }
