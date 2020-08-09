@@ -1,30 +1,36 @@
 <template>
   <div>
-    <div class="router-box">
-      <a class="router-box-item" href="/">
-        <b-icon :icon="getIcon()" :variant="getVariant()" class="mr-2" />
-        <span class="name">最新内容</span>
+    <div class="tech-square hidden-xs mb15">
+      <a class="tech-square-item" href="/">
+        <span class="tech-square-item-icon">
+          <svg-icon icon-class="faxian" class="tech-square-item-icon" />
+        </span>
+        <span>最新内容</span>
       </a>
-      <a class="router-box-item " href="/hot">
-        <b-icon :icon="getIcon()" :variant="getVariant()" class="mr-2" />
-        <span class="name">近期热门</span>
+      <a class="tech-square-item " href="/hot">
+        <span class="tech-square-item-icon">
+          <svg-icon icon-class="guanzhu" class="tech-square-item-icon" />
+        </span>
+        <span>近期热门</span>
       </a>
-      <a class="router-box-item " href="/random">
-        <b-icon :icon="getIcon()" :variant="getVariant()" class="mr-2" />
-        <span class="name">为你推荐</span>
+      <a class="tech-square-item " href="/random">
+        <span class="tech-square-item-icon">
+          <svg-icon icon-class="dingwei" class="tech-square-item-icon" />
+        </span>
+        <span>为你推荐</span>
       </a>
     </div>
     <div class="tech-square hidden-xs mb15">
       <h5 class="tech-square-title mt0 mb15">其他社区</h5>
       <a class="tech-square-item " href="https://www.cnblogs.com/coderayu" target="_blank">
         <span class="tech-square-item-icon">
-          <b-icon :icon="getIcon()" :variant="getVariant()" />
+          <svg-icon :icon-class="getIcon()" class="tech-square-item-icon" />
         </span>
         <span>博客园</span>
       </a>
       <a class="tech-square-item " href="https://github.com/liuzhenyulive" target="_blank">
         <span class="tech-square-item-icon">
-          <b-icon :icon="getIcon()" :variant="getVariant()" />
+          <svg-icon :icon-class="getIcon()" class="tech-square-item-icon" />
         </span>
         <span>Github</span>
       </a>
@@ -33,12 +39,12 @@
       <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
       <a v-for="(category,index) in this.$store.state.options.hotCategories" :key="index" class="tech-square-item " :href="'/category/'+encodeURIComponent(category.name)+'/1'">
-        <b-icon :icon="getIcon()" class="tech-square-item-icon" :variant="getVariant()" />
+        <svg-icon :icon-class="getIcon()" class="tech-square-item-icon" />
         <span>{{ category.name.length>5?category.name.substring(5):category.name }}</span>
       </a>
 
       <a class="tech-square-item " href="/categories">
-        <b-icon icon="tags" class="tech-square-item-icon" variant="warning" />
+        <svg-icon icon-class="biaoqian" class="tech-square-item-icon" />
         <span>更多分类</span>
       </a>
     </div>
@@ -48,17 +54,13 @@
 export default {
   name: 'Left',
   data() {
-    return { variants: ['success', 'warning', 'danger', 'info', 'primary'],
-      icons: ['display', 'box-seam', 'bug', 'chat-left', 'cloud', 'cloud-arrow-up', 'collection-play', 'cone', 'code-slash', 'cup', 'gem', 'gift', 'grid-fill', 'flag', 'gear', 'brightness-high', 'lightning'] }
+    return {
+      icons: ['anquan', 'biaoqian', 'dingwei', 'faxian', 'fenxiang', 'gouwu', 'gouwuche', 'guanzhu', 'huiyuan', 'naozhong', 'rili', 'shezhi', 'shoucang', 'shoucang1', 'shouye', 'sousuo', 'tixing', 'tupian', 'xiaoxi', 'youxiang', 'zhuanfa'] }
   },
   beforeCreate() {
     this.$store.dispatch('getOptions')
   },
   methods: {
-    getVariant() {
-      var index = Math.floor((Math.random() * this.variants.length))
-      return this.variants[index]
-    },
     getIcon() {
       var index = Math.floor((Math.random() * this.icons.length))
       return this.icons[index]

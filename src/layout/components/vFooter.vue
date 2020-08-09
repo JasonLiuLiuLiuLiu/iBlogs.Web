@@ -19,7 +19,10 @@
         </b-col>
 
         <b-col md="4" class="meta-footer">
-          <div class="h4"><b-icon class="h5 mb-1 mr-1" icon="heart" />关注博主</div>
+          <div class="h4">
+            <svg-icon icon-class="shoucang" />
+            关注博主
+          </div>
           <div style="margin: 0 0">
             <div style="float:right;width:35%;"><img src="https://disk.iblogs.site/pic/coderayu.png" alt="阿宇"></div>
             <div style="margin-right:35%;padding-right:5px;" class="info-text">
@@ -29,13 +32,16 @@
         </b-col>
 
         <b-col md="4" class="meta-footer">
-          <div class="h4"><b-icon class="h5 mb-1 mr-1" icon="envelope" />联系博主</div>
+          <div class="h4">
+            <svg-icon icon-class="youxiang" />
+            联系博主
+          </div>
           <div style="margin: 0 0">
             <div style="float:right;width:35%;"><img
               src="https://disk.iblogs.site/pic/liuzhenyu.png"
             ></div>
             <div style="margin-right:35%;padding-right:5px;" class="info-text"><p style="margin: 0 0">
-              刘振宇,常年活动在杭州周边,欢迎扫描右边微信二维码与我联系.</p>
+                                                                                 刘振宇,常年活动在杭州周边,欢迎扫描右边微信二维码与我联系.</p>
               <a
                 style="margin: 0 0"
                 href="mailto:liuzhenyulive@live.com?subject=Mail from iBlogs"
@@ -83,6 +89,7 @@ export default {
     height: 30px;
     width: 120px;
   }
+
   .meta-footer .upyun-logo {
     height: 30px;
     width: 80px;
