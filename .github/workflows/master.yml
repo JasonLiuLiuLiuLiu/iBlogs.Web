@@ -40,9 +40,15 @@ jobs:
     needs: [build]
 
     steps:
-    - name: deploy to cluster
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+    - name: deploy container
+      uses: appleboy/ssh-action@master
       with:
-        args: set image --record deployment/iblogs-web iblogs=${{ secrets.DOCKER_REPO }}:${{ github.run_number }} -n mybox
+        host: ${{ secrets.PRODHOST }}
+        username: ${{ secrets.PRODUSERNAME }}
+        password: ${{ secrets.PRODPASSWORD }}
+        port: ${{ secrets.PRODPORT }}
+        command_timeout: 30m
+        script: |
+          docker stop ${{ secrets.DOCKER_CONTAINER_NAME }}
+          docker rm ${{ secrets.DOCKER_CONTAINER_NAME }}
+          docker run --restart always --name ${{ secrets.DOCKER_CONTAINER_NAME }} -d -p 8081:80 ${{ secrets.DOCKER_REPO }}:prod-${{ github.run_number }}
