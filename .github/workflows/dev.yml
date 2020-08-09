@@ -45,4 +45,4 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: set image --record deployment/iblogs-web iblogs=${{ secrets.DOCKER_REPO }}:${{ github.run_number }} -n mybox
+        args: set image --record deployment/iblogs-web iblogs=${{ secrets.DOCKER_REPO }}:stage-${{ github.run_number }} -n mybox
