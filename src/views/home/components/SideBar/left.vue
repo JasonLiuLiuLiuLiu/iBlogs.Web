@@ -57,12 +57,10 @@ export default {
   methods: {
     getVariant() {
       var index = Math.floor((Math.random() * this.variants.length))
-      console.log(index)
       return this.variants[index]
     },
     getIcon() {
       var index = Math.floor((Math.random() * this.icons.length))
-      console.log(index)
       return this.icons[index]
     }
   }

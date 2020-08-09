@@ -101,7 +101,6 @@ export function timeago(dateTimeStamp) { // dateTimeStamp是一个时间毫秒�
   var month = day * 30
   var year = day * 365
   var now = new Date().getTime() // 获取当前时间毫秒
-  console.log(now)
   var diffValue = now - dateTimeStamp// 时间差
 
   if (diffValue < 0) {
