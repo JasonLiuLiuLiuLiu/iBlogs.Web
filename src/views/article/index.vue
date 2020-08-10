@@ -39,7 +39,10 @@ export default {
     }
   },
   created() {
-    const slug = this.$route.params.slug
+    let slug = this.$route.params.slug
+    if (slug === undefined) {
+      slug = 'about'
+    }
     this.getContent(slug)
   },
   methods: {

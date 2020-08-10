@@ -52,6 +52,11 @@ export const constantRoutes = [
         component: () => import('@/views/home/categories')
       },
       {
+        path: 'about',
+        name: 'about',
+        component: () => import('@/views/article/index')
+      },
+      {
         path: 'article/:slug',
         name: 'article',
         component: () => import('@/views/article/index')
