@@ -94,7 +94,7 @@
       </div>
     </div>
     <div style="margin-top: 0;">
-      <a target="_blank" href="https://iblogs.site/">联系合作</a>
+      <a target="_blank" href="mailto:liuzhenyulive@live.com?subject=Mail from iBlogs">联系合作</a>
     </div>
   </div>
 </template>
