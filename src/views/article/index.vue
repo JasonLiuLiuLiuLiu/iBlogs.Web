@@ -15,7 +15,6 @@ import vContent from './components/Content'
 import Comment from './components/Comment'
 import Share from './components/Share'
 import { index } from '../../api/content'
-import getPageTitle from '@/utils/get-page-title'
 
 export default {
   name: 'Article',
@@ -45,11 +44,14 @@ export default {
     }
     this.getContent(slug)
   },
+  beforeCreate() {
+    this.$store.dispatch('getOptions')
+  },
   methods: {
     getContent(url) {
       index(encodeURIComponent(url)).then(response => {
         this.content = response.data
-        document.title = getPageTitle(this.content.title)
+        this.$store.dispatch('setContent', this.content)
       })
     }
   }

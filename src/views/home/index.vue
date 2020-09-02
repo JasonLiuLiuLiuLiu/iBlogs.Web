@@ -5,7 +5,7 @@
         <b-col md="2" class="left d-none d-sm-block">
           <Left />
         </b-col>
-        <b-col md="7" v-if="!loading&&data!=null" class="middle">
+        <b-col v-if="!loading&&data!=null" md="7" class="middle">
           <v-content
             :display-type="displayType"
             :display-meta="displayMeta"

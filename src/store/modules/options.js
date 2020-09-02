@@ -15,7 +15,9 @@ const keys = [
   'SideBarTagsCount',
   'hotTags',
   'friendlyLinks',
-  'Author'
+  'Author',
+  'Description',
+  'Keywords'
 ]
 const options = {
   state: {
@@ -29,7 +31,9 @@ const options = {
       PageSize: 10,
       SideBarCategoriesCount: 5,
       SideBarTagsCount: 5,
-      Author: 'iBlogs'
+      Author: 'iBlogs',
+      Keywords: '',
+      Description: ''
     },
     friendlyLinks: [{ title: 'LiuZhenYu', link: 'https://github.com/liuzhenyulive' }],
     hotTags: [],

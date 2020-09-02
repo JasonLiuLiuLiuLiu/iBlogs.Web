@@ -15,7 +15,7 @@ const content = {
       slug: 'about',
       tags: null,
       thumbImg: null,
-      title: '关于',
+      title: '',
       pre: null,
       next: null
     }
