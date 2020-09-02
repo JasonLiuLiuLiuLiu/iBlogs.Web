@@ -125,7 +125,6 @@ export default {
   }
 
   #marquee {
-    color:red;
     width:100%;
     height:10px;
     line-height:10px;
