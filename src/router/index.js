@@ -34,8 +34,12 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/index',
     children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('@/views/home/index')
+      },
       {
         path: 'archives',
         name: 'archives',
