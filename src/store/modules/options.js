@@ -51,6 +51,12 @@ const options = {
     },
     SET_LINKS: (state, links) => {
       state.friendlyLinks = links
+    },
+    SET_DESCRIPTION: (state, description) => {
+      state.options.Description = description
+    },
+    SET_KEYWORDS: (state, keywords) => {
+      state.options.Keywords = keywords
     }
   },
   actions: {
@@ -66,6 +72,12 @@ const options = {
           commit('SET_TAGS', response.data.list)
         })
       })
+    },
+    setDescription({ commit }, description) {
+      commit('SET_DESCRIPTION', description)
+    },
+    setKeywords({ commit }, keywords) {
+      commit('SET_KEYWORDS', keywords)
     }
   }
 }

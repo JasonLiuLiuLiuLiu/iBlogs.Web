@@ -52,6 +52,12 @@ export default {
       index(encodeURIComponent(url)).then(response => {
         this.content = response.data
         this.$store.dispatch('setContent', this.content)
+        if (this.content.tags) {
+          this.$store.dispatch('setKeywords', this.content.tags)
+        }
+        if (this.content.description) {
+          this.$store.dispatch('setDescription', this.content.description)
+        }
       })
     }
   }
