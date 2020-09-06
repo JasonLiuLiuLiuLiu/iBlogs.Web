@@ -2,10 +2,10 @@
   <div>
     <b-container>
       <b-row>
-        <b-col class="col-md-2 left mt-2">
+        <b-col md="2" class="left d-none d-sm-block">
           <Left />
         </b-col>
-        <b-col v-if="!loading&&data!=null" class="col-md-7 middle">
+        <b-col v-if="!loading&&data!=null" md="7" class="middle">
           <v-content
             :display-type="displayType"
             :display-meta="displayMeta"
@@ -15,7 +15,7 @@
             @getContentsByNum="getContentsByNum"
           />
         </b-col>
-        <b-col class="col-md-3 right">
+        <b-col md="3" class="right">
           <Right />
         </b-col>
       </b-row>

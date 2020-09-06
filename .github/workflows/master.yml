@@ -27,10 +27,12 @@ jobs:
       - name: npm build
         run: npm run build:prod
 
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      - name: Scp Deploy Actions
+        uses: garygrossgarten/github-action-scp@release
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_PROD_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist
+            local: dist
+            remote: /usr/share/nginx/html
+            host: ${{ secrets.SCP_SERVER }}
+            username: ${{ secrets.SCP_USERNAME }}
+            password: ${{ secrets.SCP_PASSWORD }}
+            port: ${{ secrets.SCP_PORT }}

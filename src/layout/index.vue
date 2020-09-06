@@ -8,6 +8,7 @@
 
 <script>
 import { AppMain, vHeader, vFooter } from './components'
+import getPageTitle from '@/utils/get-page-title'
 
 export default {
   name: 'Layout',
@@ -16,14 +17,27 @@ export default {
     'v-Header': vHeader,
     'v-Footer': vFooter
   },
+  metaInfo() {
+    return {
+      title: getPageTitle(this.$store.state.content.content.title),
+      meta: [
+        {
+          name: 'description',
+          content: this.$store.state.options.options.Description
+        },
+        {
+          name: 'author',
+          content: this.$store.state.options.options.Author
+        },
+        {
+          name: 'keywords',
+          content: this.$store.state.options.options.Keywords
+        }]
+    }
+  },
   computed: {
     device() {
       return this.$store.state.app.device
-    },
-    classObj() {
-      return {
-        mobile: this.device === 'mobile'
-      }
     }
   }
 }

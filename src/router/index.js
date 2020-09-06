@@ -34,8 +34,12 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/index',
     children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('@/views/home/index')
+      },
       {
         path: 'archives',
         name: 'archives',
@@ -50,6 +54,11 @@ export const constantRoutes = [
         path: 'categories',
         name: 'categories',
         component: () => import('@/views/home/categories')
+      },
+      {
+        path: 'about',
+        name: 'about',
+        component: () => import('@/views/article/index')
       },
       {
         path: 'article/:slug',

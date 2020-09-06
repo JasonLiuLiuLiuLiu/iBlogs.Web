@@ -15,7 +15,6 @@ import vContent from './components/Content'
 import Comment from './components/Comment'
 import Share from './components/Share'
 import { index } from '../../api/content'
-import getPageTitle from '@/utils/get-page-title'
 
 export default {
   name: 'Article',
@@ -39,14 +38,26 @@ export default {
     }
   },
   created() {
-    const slug = this.$route.params.slug
+    let slug = this.$route.params.slug
+    if (slug === undefined) {
+      slug = 'about'
+    }
     this.getContent(slug)
+  },
+  beforeCreate() {
+    this.$store.dispatch('getOptions')
   },
   methods: {
     getContent(url) {
       index(encodeURIComponent(url)).then(response => {
         this.content = response.data
-        document.title = getPageTitle(this.content.title)
+        this.$store.dispatch('setContent', this.content)
+        if (this.content.tags) {
+          this.$store.dispatch('setKeywords', this.content.tags)
+        }
+        if (this.content.description) {
+          this.$store.dispatch('setDescription', this.content.description)
+        }
       })
     }
   }

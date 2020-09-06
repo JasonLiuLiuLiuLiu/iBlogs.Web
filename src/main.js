@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 import router from './router'
+import vueMeta from 'vue-meta'
 
 import '@/icons' // icon
 import '@/permission' // permission control
@@ -14,6 +15,7 @@ import '@/styles/custom.css'
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+Vue.use(vueMeta)
 
 Vue.config.productionTip = false
 
