@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="activity-recommend mb30 profile-container">
+    <div class="activity-recommend mb30 profile-container" :hidden="!this.$store.state.options.options.AvatarLink">
       <div class="clearfix d-flex d-md-block flex-items-center mb-4 mb-md-0">
         <div class="position-relative d-inline-block col-2 col-md-12 mr-3 mr-md-0 flex-shrink-0" style="z-index:4;">
           <div><img
@@ -16,7 +16,7 @@
             width="200"
             height="200"
             class="avatar avatar-user width-full border bg-white"
-            src="https://disk.iblogs.site/img/coderayu.jpg"
+            :src="this.$store.state.options.options.AvatarLink"
           ></div>
           <div class="user-status-container position-relative hide-sm hide-md">
             <div class="d-flex user-status-circle-badge-container">
@@ -28,7 +28,7 @@
                 <div class="d-flex flex-items-center flex-items-stretch">
                   <div class="user-status-emoji-container mr-2">
                     <div>
-                      <div class="g-emoji">😅</div>
+                      <div class="g-emoji">{{ this.$store.state.options.options.EmojiStatus }}</div>
                     </div>
                   </div>
                 </div>
@@ -40,9 +40,9 @@
       </div>
       <div>
         <span class="block m-t-sm status-msg">
-          <strong class="font-bold text-lt">吭呲吭呲,满头大汗~</strong>
+          <strong class="font-bold text-lt">{{ this.$store.state.options.options.Slogan1 }}</strong>
         </span>
-        <span class="text-muted text-xs block status-msg">码农阿宇</span>
+        <span class="text-muted text-xs block status-msg">{{ this.$store.state.options.options.Slogan2 }}</span>
       </div>
     </div>
     <div class="activity-recommend mb30">
@@ -150,7 +150,13 @@
       <div class="activity-title">友情链接</div>
       <div class="activity-recommend-area">
         <div class="tags l-h-2x">
-          <a href="https://blog.laobian.me/" target="_blank" class="label badge">Jerry Bian's Blog</a>
+          <a
+            v-for="(link,index) in this.$store.state.options.options.FriendlyLinks.split('||')"
+            :key="index"
+            :href="link.split('->')[1]"
+            target="_blank"
+            class="label badge"
+          >{{ link.split('->')[0] }}</a>
           <a target="_blank" href="mailto:liuzhenyulive@live.com?subject=Mail from iBlogs" class="label badge">联系合作</a>
         </div>
       </div>
@@ -375,7 +381,6 @@
     margin-top: 3px;
     text-align: center;
   }
-  
 
   .right .activity-recommend .activity-recommend-area .activity-recommend-item .activity-detail {
     color: #999;
