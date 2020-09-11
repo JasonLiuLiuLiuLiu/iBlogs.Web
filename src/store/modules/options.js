@@ -17,7 +17,12 @@ const keys = [
   'friendlyLinks',
   'Author',
   'Description',
-  'Keywords'
+  'Keywords',
+  'Slogan1',
+  'Slogan2',
+  'FriendlyLinks',
+  'AvatarLink',
+  'EmojiStatus'
 ]
 const options = {
   state: {
@@ -33,9 +38,13 @@ const options = {
       SideBarTagsCount: 5,
       Author: 'iBlogs',
       Keywords: '',
-      Description: ''
+      Description: '',
+      Slogan1: '',
+      Slogan2: '',
+      FriendlyLinks: '',
+      AvatarLink: null,
+      EmojiStatus: ''
     },
-    friendlyLinks: [{ title: 'LiuZhenYu', link: 'https://github.com/liuzhenyulive' }],
     hotTags: [],
     hotCategories: []
   },
@@ -61,7 +70,9 @@ const options = {
   },
   actions: {
     getOptions({ commit }) {
-      if (loaded) { return }
+      if (loaded) {
+        return
+      }
       loaded = true
       getOptions(keys).then(response => {
         commit('SET_OPTIONS', response.data)

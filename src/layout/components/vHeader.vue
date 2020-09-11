@@ -14,16 +14,13 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon" />
+          <span class="navbar-toggler-icon"/>
         </button>
         <b-collapse id="navbarResponsive" class="collapse navbar-collapse">
           <b-navbar-nav class="ml-auto">
             <b-nav-item href="/archives">归档</b-nav-item>
             <b-nav-item href="/about">关于</b-nav-item>
             <b-nav-item href="/rss">订阅</b-nav-item>
-            <b-nav-form>
-              <b-form-input size="sm" class="mr-sm-2" placeholder="搜索"></b-form-input>
-            </b-nav-form>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -32,14 +29,14 @@
 
 </template>
 <script>
-import { headroom } from 'vue-headroom'
+  import { headroom } from 'vue-headroom'
 
-export default {
-  name: 'VHeader',
-  components: {
-    headroom
+  export default {
+    name: 'VHeader',
+    components: {
+      headroom
+    }
   }
-}
 </script>
 <style>
   .navbar-brand img {
