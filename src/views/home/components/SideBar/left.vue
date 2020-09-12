@@ -38,8 +38,15 @@
     <div class="tech-square hidden-xs">
       <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
-      <a v-for="(category,index) in this.$store.state.options.hotCategories" :key="index" class="tech-square-item " :href="'/category/'+encodeURIComponent(category.name)+'/1'">
-        <svg-icon :icon-class="getIcon()" class="tech-square-item-icon" />
+      <a
+        v-for="(category,index) in this.$store.state.options.hotCategories"
+        :key="index"
+        class="tech-square-item "
+        :href="'/category/'+encodeURIComponent(category.name)+'/1'"
+      >
+        <span class="tech-square-item-icon">
+          <svg-icon :icon-class="getIcon()" class="tech-square-item-icon" />
+        </span>
         <span>{{ category.name.length>5?category.name.substring(5):category.name }}</span>
       </a>
 
@@ -55,7 +62,8 @@ export default {
   name: 'Left',
   data() {
     return {
-      icons: ['anquan', 'biaoqian', 'dingwei', 'faxian', 'fenxiang', 'gouwu', 'gouwuche', 'guanzhu', 'huiyuan', 'naozhong', 'rili', 'shezhi', 'shoucang', 'shoucang1', 'shouye', 'sousuo', 'tixing', 'tupian', 'xiaoxi', 'youxiang', 'zhuanfa'] }
+      icons: ['anquan', 'biaoqian', 'dingwei', 'faxian', 'fenxiang', 'gouwu', 'gouwuche', 'guanzhu', 'huiyuan', 'naozhong', 'rili', 'shezhi', 'shoucang', 'shoucang1', 'shouye', 'sousuo', 'tixing', 'tupian', 'xiaoxi', 'youxiang', 'zhuanfa']
+    }
   },
   beforeCreate() {
     this.$store.dispatch('getOptions')
@@ -69,9 +77,10 @@ export default {
 }
 </script>
 <style>
-  .list-group-item{
+  .list-group-item {
     border: 0;
   }
+
   .blog-info-icons {
     align-items: center;
     position: relative;
@@ -82,26 +91,32 @@ export default {
     display: flex;
     height: 40px;
   }
+
   .blog-info-icons svg {
     vertical-align: middle;
     width: 13px;
     height: 13px;
   }
+
   .pull-right {
-    float: right!important;
+    float: right !important;
   }
+
   .left {
     color: #757575;
   }
+
   .left .router-box {
     margin-left: -10px;
     margin-bottom: 15px;
   }
+
   .left .router-box-item.active {
     background: #009A61;
     color: #fff;
     font-weight: 900;
   }
+
   .left .router-box-item {
     display: block;
     height: 34px;
@@ -112,9 +127,11 @@ export default {
     text-decoration: none;
     margin-bottom: 1px;
   }
+
   .left .router-box-item.active i, .left .router-box-item.active img {
     filter: brightness(0) invert(1);
   }
+
   .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -123,15 +140,18 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   .left .tech-square {
     margin-left: -10px;
   }
+
   .left .tech-square-title {
     color: #212121;
     position: relative;
     display: inline-block;
     padding-left: 10px;
   }
+
   .left .tech-square-title::after {
     position: absolute;
     content: '';
@@ -140,21 +160,26 @@ export default {
     margin-left: 5px;
     margin-top: 8px;
   }
+
   .left .tech-square-item-icon {
     width: 35px;
     text-align: center;
     color: #999;
   }
+
   .left .tech-square-item img {
     width: 16px;
     height: 16px;
   }
+
   .mt0, .mt-0 {
     margin-top: 0px !important;
   }
+
   h5, .h5 {
     font-size: 14px;
   }
+
   h5 {
     display: block;
     font-size: 0.83em;
@@ -164,6 +189,7 @@ export default {
     margin-inline-end: 0px;
     font-weight: bold;
   }
+
   .left .tech-square-item {
     height: 34px;
     display: flex;
@@ -173,14 +199,17 @@ export default {
     margin-bottom: 1px;
     border-radius: 4px;
   }
+
   .left .tech-square-item-icon {
     width: 35px;
     text-align: center;
     color: #999;
   }
+
   .mb15, .mb-15 {
     margin-bottom: 15px !important;
   }
+
   .mb30, .mb-30 {
     margin-bottom: 30px !important;
   }
