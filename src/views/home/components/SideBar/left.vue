@@ -51,7 +51,9 @@
       </a>
 
       <a class="tech-square-item " href="/categories">
-        <svg-icon icon-class="biaoqian" class="tech-square-item-icon" />
+        <span class="tech-square-item-icon">
+          <svg-icon icon-class="biaoqian" class="tech-square-item-icon" />
+        </span>
         <span>更多分类</span>
       </a>
     </div>
