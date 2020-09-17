@@ -4,8 +4,8 @@
       <b-row>
         <b-col md="4" class="meta-footer">
           <b-card class="border-0">
-            <b-card-img src="/static/img/logo.png" alt="" class="logo" top/>
-            <b-card-img src="/static/img/upyun_logo5.png" alt="本站由又拍云加速" class="upyun-logo" top/>
+            <b-card-img src="~/static/img/logo.png" alt="" class="logo" top/>
+            <b-card-img src="~/static/img/upyun_logo5.png" alt="本站由又拍云加速" class="upyun-logo" top/>
 
             <b-card-text class="mt-2 mb-0">
               Always coding , Always writing!
