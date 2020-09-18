@@ -21,8 +21,8 @@ const keys = [
   'AvatarLink',
   'EmojiStatus'
 ];
-const options = {
-  state: {
+export const state =()=> ({
+
     options: {
       Announcement: '通知公告',
       ContentCount: 0,
@@ -44,8 +44,9 @@ const options = {
     },
     hotTags: [],
     hotCategories: []
-  },
-  mutations: {
+  });
+
+export const mutations= {
     SET_OPTIONS: (state, options) => {
       state.options = options
     },
@@ -64,10 +65,4 @@ const options = {
     SET_KEYWORDS: (state, keywords) => {
       state.options.Keywords = keywords
     }
-  },
-  actions: {
-
-  }
-};
-
-export default options
+  };

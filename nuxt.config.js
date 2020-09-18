@@ -1,6 +1,9 @@
 import {resolve} from "path";
 
 module.exports = {
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:8080'
+  },
   /*
   ** Headers of the page
   */
