@@ -24,8 +24,8 @@
 </template>
 
 <script>
-  import right from '~/components/sidebar/right'
-  import left from '~/components/sidebar/left'
+  import right from '~/components/SideBar/right'
+  import left from '~/components/SideBar/left'
   import content from '~/components/content'
   import { dateFormat } from '~/utils/dateUtils'
 
