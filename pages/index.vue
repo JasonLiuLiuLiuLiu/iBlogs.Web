@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col md="2" class="left d-none d-sm-block">
-          <left />
+          <left/>
         </b-col>
         <b-col md="7" class="middle">
           <v-content
@@ -16,7 +16,7 @@
           />
         </b-col>
         <b-col md="3" class="right">
-          <right />
+          <right/>
         </b-col>
       </b-row>
     </b-container>
@@ -27,11 +27,22 @@
   import right from '~/components/SideBar/right'
   import left from '~/components/SideBar/left'
   import content from '~/components/content'
-  import { dateFormat } from '~/utils/dateUtils'
+  import {dateFormat} from '~/utils/dateUtils'
+  import {page} from '~/api/content'
 
   export default {
     name: 'index',
-    components: { right, left, vContent: content },
+    components: {right, left, vContent: content},
+    async asyncData(content) {
+      let pageNum = 1;
+      let pageSize = 10;
+      let orderType = 'index';
+      let response = await page(pageNum, pageSize, orderType);
+      return {
+        data: response.data
+      }
+
+    },
     data() {
       return {
         displayType: 'index',
@@ -76,7 +87,6 @@
             }];
           break
       }
-      this.loadContents(this.$route.params.id)
     },
     methods: {
       formatDate(time) {
@@ -84,13 +94,7 @@
         const date = new Date(time);
         return dateFormat(date, 'yyyy年MM月dd日')
       },
-      getContentsByNum(pageNum) {
-        this.loadContents(pageNum)
-      },
-      loadContents(pageNum) {
 
-
-      }
     }
   }
 </script>
