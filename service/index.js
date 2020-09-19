@@ -2,7 +2,9 @@ import axios from 'axios'
 import config from './config'
 
 if (process.server) {
-  config.baseURL = process.env.baseUrl
+  config.baseURL = process.env.baseUrl;
+} else {
+  config.baseURL = process.env.clientSideBaseUrl;
 }
 
 const service = axios.create(config);

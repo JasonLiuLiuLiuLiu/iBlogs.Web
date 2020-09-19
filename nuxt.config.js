@@ -2,7 +2,17 @@ import {resolve} from "path";
 
 module.exports = {
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:8080'
+    baseUrl: process.env.BASE_URL || 'http://localhost:8080',
+    clientSideBaseUrl: process.env.CLIENT_SIDE_BASE_URL || 'http://127.0.0.1:8080',
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'index',
+        path: '/',
+        component: resolve(__dirname, 'pages/index/_id.vue')
+      })
+    }
   },
   /*
   ** Headers of the page

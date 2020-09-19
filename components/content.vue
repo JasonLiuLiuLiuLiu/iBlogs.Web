@@ -1,6 +1,6 @@
 <template>
   <b-list-group class="list-group-flush">
-    <b-breadcrumb :items="menuItems" class="mt-2 pr-2 pb-2" />
+    <b-breadcrumb :items="menuItems" class="mt-2 pr-2 pb-2"/>
     <b-list-group-item v-for="content in data.list" :key="content.id" class="flex-column align-items-start post-item">
       <b-card-title>
         <b-link
@@ -33,13 +33,14 @@
       </b-link>
     </b-list-group-item>
     <b-card class="mb-0 border-0 text-center">
-      <b-pagination-nav :link-gen="linkGen" :number-of-pages="data.totalPage" :value="data.pageNum" limit="10" use-router @change="indexChanged" />
+      <b-pagination-nav :link-gen="linkGen" :number-of-pages="data.totalPage" :value="data.pageNum" limit="10"
+                        use-router @change="indexChanged"/>
     </b-card>
   </b-list-group>
 </template>
 <script>
 
-  import { dateFormat } from '~/utils/dateUtils'
+  import {dateFormat} from '~/utils/dateUtils'
 
   export default {
     name: 'Content',
@@ -53,11 +54,7 @@
     props: ['displayType', 'displayMeta', 'orderType', 'data', 'menuItems'],
     methods: {
       linkGen(pageNum) {
-        if (!this.displayMeta) {
-          return `/${this.orderType}/${pageNum}`
-        } else {
-          return `/${this.displayType}/${encodeURIComponent(this.displayMeta)}/${pageNum}`
-        }
+        return `/index/${pageNum}`
       },
       indexChanged(pageNum) {
         this.$emit('getContentsByNum', pageNum)
@@ -69,6 +66,7 @@
   .pagination {
     justify-content: center;
   }
+
   .card-title a {
     display: inline;
     font-weight: 500;

@@ -32,10 +32,17 @@
 
   export default {
     name: 'index',
+    validate({ params }) {
+      if(!params.id){
+        params.id=1;
+      }
+      // 必须是number类型
+      return /^\d+$/.test(params.id)
+    },
     components: {right, left, vContent: content},
-    async asyncData(content) {
-      let pageNum = 1;
-      let pageSize = 10;
+    async asyncData({store,params}) {
+      let pageNum = params.id;
+      let pageSize = store.state.options.options.PageSize;
       let orderType = 'index';
       let response = await page(pageNum, pageSize, orderType);
       return {
@@ -61,33 +68,6 @@
           }]
       }
     },
-    created() {
-      this.orderType = this.$route.params.orderType == null ? 'index' : this.$route.params.orderType;
-      switch (this.orderType) {
-        case 'hot':
-          this.menuItems = [
-            {
-              text: '首页',
-              href: '/'
-            },
-            {
-              text: '近期热门',
-              active: true
-            }];
-          break;
-        case 'random':
-          this.menuItems = [
-            {
-              text: '首页',
-              href: '/'
-            },
-            {
-              text: '为你推荐',
-              active: true
-            }];
-          break
-      }
-    },
     methods: {
       formatDate(time) {
         time = parseInt(time);
@@ -95,7 +75,11 @@
         return dateFormat(date, 'yyyy年MM月dd日')
       },
       getContentsByNum(pageNum){
-
+        let pageSize = this.$store.state.options.options.PageSize;
+        let orderType = 'index';
+        page(pageNum, pageSize, orderType).then(response=>{
+          this.data=response.data;
+        });
       }
     }
   }
