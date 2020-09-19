@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-   <!-- <div class="activity-recommend mb30 profile-container" :hidden="!this.$store.state.options.options.AvatarLink">
+    <div class="activity-recommend mb30 profile-container" :hidden="!this.$store.state.options.options.AvatarLink">
       <div class="clearfix d-flex d-md-block flex-items-center mb-4 mb-md-0">
         <div class="position-relative d-inline-block col-2 col-md-12 mr-3 mr-md-0 flex-shrink-0" style="z-index:4;">
           <div><img
@@ -44,10 +44,10 @@
         </span>
         <span class="text-muted text-xs block status-msg">{{ this.$store.state.options.options.Slogan2 }}</span>
       </div>
-    </div>-->
+    </div>
     <div class="activity-recommend mb30">
       <div class="activity-title">博客信息</div>
-      <!--<div class="activity-recommend-area">
+      <div class="activity-recommend-area">
         <ul class="list-group">
           <li class="list-group-item activity-recommend-item"><span class="blog-info-icons"> <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -130,9 +130,9 @@
           >{{ this.$store.state.options.options.LastActiveTime|formatDate }}前</span>最后活动
           </li>
         </ul>
-      </div>-->
+      </div>
     </div>
-<!--    <div class="activity-recommend mb30">
+    <div class="activity-recommend mb30">
       <div class="activity-title">标签云</div>
       <div class="activity-recommend-area">
         <div class="tags l-h-2x">
@@ -145,18 +145,18 @@
           <a href="/tags" class="label badge">更多</a>
         </div>
       </div>
-    </div>-->
+    </div>
     <div class="activity-recommend mb30">
       <div class="activity-title">友情链接</div>
       <div class="activity-recommend-area">
         <div class="tags l-h-2x">
-         <!-- <a
+          <a
             v-for="(link,index) in this.$store.state.options.options.FriendlyLinks.split('||')"
             :key="index"
             :href="link.split('->')[1]"
             target="_blank"
             class="label badge"
-          >{{ link.split('->')[0] }}</a>-->
+          >{{ link.split('->')[0] }}</a>
           <a target="_blank" href="mailto:liuzhenyulive@live.com?subject=Mail from iBlogs" class="label badge">联系合作</a>
         </div>
       </div>

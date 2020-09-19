@@ -38,17 +38,17 @@
     <div class="tech-square hidden-xs">
       <h5 class="tech-square-title mt0 mb15">博客分类</h5>
 
-<!--      <a
+      <a
         v-for="(category,index) in this.$store.state.options.hotCategories"
         :key="index"
         class="tech-square-item "
         :href="'/category/'+encodeURIComponent(category.name)+'/1'"
       >
-        <span class="tech-square-item-icon">
-          <svg-icon :icon-class="getIcon()" class="tech-square-item-icon" />
-        </span>
+              <span class="tech-square-item-icon">
+                <svg-icon :icon-class="getIcon()" class="tech-square-item-icon"/>
+              </span>
         <span>{{ category.name.length>5?category.name.substring(5):category.name }}</span>
-      </a>-->
+      </a>
 
       <a class="tech-square-item " href="/categories">
         <span class="tech-square-item-icon">

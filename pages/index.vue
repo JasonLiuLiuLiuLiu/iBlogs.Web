@@ -94,7 +94,9 @@
         const date = new Date(time);
         return dateFormat(date, 'yyyy年MM月dd日')
       },
+      getContentsByNum(pageNum){
 
+      }
     }
   }
 </script>
