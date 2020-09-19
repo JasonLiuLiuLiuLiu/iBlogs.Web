@@ -54,7 +54,7 @@
     props: ['displayType', 'displayMeta', 'orderType', 'data', 'menuItems'],
     methods: {
       linkGen(pageNum) {
-        return `/index/${pageNum}`
+        return `/${this.displayType}/${pageNum}`
       },
       indexChanged(pageNum) {
         this.$emit('getContentsByNum', pageNum)

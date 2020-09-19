@@ -30,7 +30,7 @@
   import {dateFormat} from '~/utils/dateUtils'
   import {page} from '~/api/content'
 
-  let orderType='index';
+  let orderType='random';
   export default {
     name: 'index',
     validate({ params }) {
@@ -63,7 +63,7 @@
             href: '/'
           },
           {
-            text: '最新内容',
+            text: '为你推荐',
             active: true
           }]
       }
@@ -86,4 +86,3 @@
 <style>
 
 </style>
-
