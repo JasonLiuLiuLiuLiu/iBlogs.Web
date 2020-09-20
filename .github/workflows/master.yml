@@ -27,12 +27,36 @@ jobs:
       - name: npm build
         run: npm run build:prod
 
-      - name: Scp Deploy Actions
-        uses: garygrossgarten/github-action-scp@release
+      - name: deploy web
+        uses: appleboy/ssh-action@master
         with:
-            local: dist
-            remote: /usr/share/nginx/html
-            host: ${{ secrets.SCP_SERVER }}
-            username: ${{ secrets.SCP_USERNAME }}
-            password: ${{ secrets.SCP_PASSWORD }}
-            port: ${{ secrets.SCP_PORT }}
+          host: ${{ secrets.SCP_SERVER }}
+          username: ${{ secrets.SCP_USERNAME }}
+          password: ${{ secrets.SCP_PASSWORD }}
+          port: ${{ secrets.SCP_PORT }}
+          command_timeout: 30m
+          script: |
+            yum install git -y
+            DIR="/docker/workspace"
+            mkdir -p $DIR
+            if [[ -d "$DIR/WebInProgress" ]]
+            then
+              echo "Another process is in progress"
+              exit 1
+            fi
+            cd $DIR
+            mkdir WebInProgress
+            if [ -d "$DIR/iBlogs.Web" ]; then
+              cd $DIR/iBlogs.Web
+              git checkout master
+              git pull
+            else
+              git clone https://github.com/liuzhenyulive/iBlogs.Web.git
+              cd $DIR/iBlogs.Web
+              git checkout master
+              git pull
+            fi
+            npm install
+            npm run build:prod
+            pm2 start npm -- run start:prod
+            rm -rf $DIR/WebInProgress

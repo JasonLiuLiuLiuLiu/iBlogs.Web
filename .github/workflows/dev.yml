@@ -25,15 +25,41 @@ jobs:
           npm install
           # Runs a single command using the runners shell
       - name: npm build
-        run: npm run build:stage
+        run: npm run build
 
-      - name: Scp Deploy Actions
-        uses: garygrossgarten/github-action-scp@release
+      - name: deploy web
+        uses: appleboy/ssh-action@master
         with:
-            local: dist
-            remote: /usr/share/nginx/html
-            host: ${{ secrets.SCP_DEV_SERVER }}
-            username: ${{ secrets.SCP_DEV_USERNAME }}
-            password: ${{ secrets.SCP_DEV_PASSWORD }}
-            port: ${{ secrets.SCP_DEV_PORT }}
+          host: ${{ secrets.SCP_DEV_SERVER }}
+          username: ${{ secrets.SCP_DEV_USERNAME }}
+          password: ${{ secrets.SCP_DEV_PASSWORD }}
+          port: ${{ secrets.SCP_DEV_PORT }}
+          command_timeout: 30m
+          script: |
+            yum install git -y
+            DIR="/docker/workspace"
+            mkdir -p $DIR
+            if [[ -d "$DIR/WebInProgress" ]]
+            then
+              echo "Another process is in progress"
+              exit 1
+            fi
+            cd $DIR
+            mkdir WebInProgress
+            if [ -d "$DIR/iBlogs.Web" ]; then
+              cd $DIR/iBlogs.Web
+              git checkout dev
+              git pull
+            else
+              git clone https://github.com/liuzhenyulive/iBlogs.Web.git
+              cd $DIR/iBlogs.Web
+              git checkout dev
+              git pull
+            fi
+            npm install
+            npm run build:dev
+            pm2 start npm -- run start:dev
+            rm -rf $DIR/WebInProgress
+
+
 
