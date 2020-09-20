@@ -10,7 +10,11 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "build:dev": "cross-env CLIENT_SIDE_BASE_URL=http://192.168.101.100:30080 BASE_URL=http://localhost:30080 nuxt build",
+    "start:dev": "cross-env CLIENT_SIDE_BASE_URL=http://192.168.101.100:30080 BASE_URL=http://localhost:30080 nuxt start",
+    "build:prod": "cross-env CLIENT_SIDE_BASE_URL=https://api.iblogs.site BASE_URL=http://localhost:8080 nuxt build",
+    "start:prod": "cross-env CLIENT_SIDE_BASE_URL=https://api.iblogs.site BASE_URL=http://localhost:8080 nuxt start"
   },
   "dependencies": {
     "axios": "^0.20.0",
