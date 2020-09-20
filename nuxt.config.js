@@ -25,7 +25,7 @@ module.exports = {
       {hid: 'description', name: 'description', content: 'The web for https://iblogs.site'}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      {rel: 'icon', type: 'image/png', href: '/favicon.png'}
     ]
   },
   modules: ['bootstrap-vue/nuxt'],

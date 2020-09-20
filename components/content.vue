@@ -41,6 +41,7 @@
 <script>
 
   import {dateFormat} from '~/utils/dateUtils'
+  let currentPage=1;
 
   export default {
     name: 'Content',
@@ -61,6 +62,9 @@
         }
       },
       indexChanged(pageNum) {
+        if(pageNum===currentPage)
+          return;
+        currentPage=pageNum;
         this.$emit('getContentsByNum', pageNum)
       }
     }
