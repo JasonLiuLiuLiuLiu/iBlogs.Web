@@ -17,7 +17,7 @@
     "start:prod": "cross-env CLIENT_SIDE_BASE_URL=https://api.iblogs.site BASE_URL=http://localhost:8080 nuxt start"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.17.1",
     "bootswatch": "^4.5.2",
     "cross-env": "^7.0.2",
